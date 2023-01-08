@@ -3,9 +3,45 @@
   "parserOptions": {
     "project": "tsconfig.json"
   },
+  "plugins": ["styled-components-varname"],
   "rules": {
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/explicit-module-boundary-types": "error"
+    "@typescript-eslint/explicit-module-boundary-types": "error",
+    "styled-components-varname/varname": [
+      2,
+      {
+        "tagStyle": {
+          "pattern": "^_S[A-Z][a-z0-9]+[A-Za-z0-9]*$" // PascalCase with prefix _S
+        },
+        "extendedStyle": {
+          "pattern": "^_[$][A-Z][a-z0-9]+[A-Za-z0-9]*$" // PascalCase with prefix _$
+        }
+      }
+    ],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "prefix": ["I"]
+      },
+      {
+        "selector": "typeAlias",
+        "format": ["PascalCase"],
+        "prefix": ["T"]
+      },
+      {
+        "selector": "enum",
+        "format": ["PascalCase"],
+        "prefix": ["E"]
+      },
+      {
+        "selector": "class",
+        "modifiers": ["abstract"],
+        "format": ["PascalCase"],
+        "prefix": ["A"]
+      }
+    ]
   }
 }
