@@ -1,10 +1,17 @@
 {
   "tabWidth": 2,
-  "singleAttributePerLine": true,
+  "useTabs": false,
+  "singleAttributePerLine": false,
+  "editorconfig": true,
+  "jsxSingleQuote": true,
   "arrowParens": "always",
+  "bracketSameLine": true,
   "bracketSpacing": true,
-  "endOfLine": "crlf",
+  "endOfLine": "lf",
   "singleQuote": true,
   "trailingComma": "none",
-  "semi": false
+  "semi": false,
+  "parser": "typescript",
+  "printWidth": 80,
+  "proseWrap": "always"
 }

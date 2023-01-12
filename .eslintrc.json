@@ -1,24 +1,42 @@
 {
-  "extends": "standard-with-typescript",
-  "parserOptions": {
-    "project": "tsconfig.json"
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+},
+"extends": [
+    "eslint:recommended",
+    "plugin:react/all",
+    "standard-with-typescript",
+    "plugin:prettier/recommended",
+    "plugin:react-hooks/recommended"
+],
+"parser": "@typescript-eslint/parser",
+"parserOptions": {
+  "project": "tsconfig.json",
+  "ecmaFeatures": {
+      "jsx": true,
+      "tsx": true
   },
-  "plugins": ["styled-components-varname"],
+  "ecmaVersion": "latest",
+  "sourceType": "module"
+  },  
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "react-hooks",
+    "prettier"
+  ],
   "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-no-target-blank": "off",
+    "no-unused-vars": "off",
+    "react/jsx-no-literals":  "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/explicit-module-boundary-types": "error",
-    "styled-components-varname/varname": [
-      2,
-      {
-        "tagStyle": {
-          "pattern": "^_S[A-Z][a-z0-9]+[A-Za-z0-9]*$" // PascalCase with prefix _S
-        },
-        "extendedStyle": {
-          "pattern": "^_[$][A-Z][a-z0-9]+[A-Za-z0-9]*$" // PascalCase with prefix _$
-        }
-      }
-    ],
+    "@typescript-eslint/triple-slash-reference": "off",
     "@typescript-eslint/naming-convention": [
       "error",
       {
