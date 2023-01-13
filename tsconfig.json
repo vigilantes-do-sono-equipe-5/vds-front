@@ -16,6 +16,9 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  "files": [
+    "src/interface/colors.d.ts"
+  ],
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

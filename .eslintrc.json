@@ -31,6 +31,7 @@
     "react/react-in-jsx-scope": "off",
     "react/jsx-no-target-blank": "off",
     "no-unused-vars": "off",
+    "react/jsx-max-depth":"off",
     "react/jsx-no-literals":  "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "@typescript-eslint/strict-boolean-expressions": "off",

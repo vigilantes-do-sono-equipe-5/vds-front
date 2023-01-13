@@ -1,18 +1,10 @@
-import {
-  createGlobalStyle,
-  DefaultTheme,
-  GlobalStyleComponent,
-  ThemeProps
-} from 'styled-components/macro'
+import { createGlobalStyle } from 'styled-components'
 
-const _SGlobalStyle: GlobalStyleComponent<
-ThemeProps<DefaultTheme>,
-DefaultTheme
-> = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
   }
-`
-
-export default _SGlobalStyle
+  `
