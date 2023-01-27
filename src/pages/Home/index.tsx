@@ -1,5 +1,10 @@
+import Calendary from '../../components/Calendary'
 import { Container } from './styled'
 
 export default function Home() {
-  return <Container>Texto</Container>
+  return (
+    <Container>
+      <Calendary />
+    </Container>
+  )
 }

@@ -7,6 +7,7 @@ import { lightTheme } from '../assets/themes/light'
 import Home from '../pages/Home'
 
 export default function Router() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [theme, setTheme] = useState(true)
   return (
     <ThemeProvider theme={theme ? lightTheme : DarkTheme}>

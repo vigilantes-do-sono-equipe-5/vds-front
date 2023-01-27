@@ -17,7 +17,7 @@
     "jsx": "react-jsx"
   },
   "files": [
-    "src/interface/colors.d.ts"
+    "src/interfaces/colors.d.ts"
   ],
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

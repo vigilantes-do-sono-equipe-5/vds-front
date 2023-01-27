@@ -60,7 +60,7 @@
         "modifiers": ["abstract"],
         "format": ["PascalCase"],
         "prefix": ["A"]
-      }
+      }      
     ]
   }
 }
