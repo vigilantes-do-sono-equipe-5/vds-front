@@ -1,12 +1,26 @@
-import { useState } from 'react'
-import { BsArrowLeft } from 'react-icons/bs'
-import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import {
+  BsBarChart,
+  BsBarChartFill,
+  BsFillCaretLeftFill,
+  BsFillCaretRightFill,
+  BsFillEnvelopeFill,
+  BsFillEnvelopeOpenFill,
+  BsHouse,
+  BsHouseFill,
+  BsMoonStarsFill,
+  BsQuestion,
+  BsSunFill,
+  BsToggle2Off,
+  BsToggle2On
+} from 'react-icons/bs'
 import Logo from '../../assets/Logo'
 import {
   Container,
   Dropdown,
   LogoMenu,
   Nav,
+  NavLink,
   NavMenu,
   ThemeBox,
   ThemeButton
@@ -20,91 +34,133 @@ interface INavbar {
   chart: boolean
   message: boolean
   help: boolean
-  toggle: boolean
+  theme: boolean
 }
 
 export default function Menu({ changeTheme }: ITheme) {
-  const [toggle, setToggle] = useState<boolean>(true)
+  const [theme, setTheme] = useState<boolean>(true)
   const [dropdown, setDropdown] = useState<boolean>(true)
-  const [value, setValue] = useState<string>('true')
   const [menu, setMenu] = useState<INavbar>(Object)
 
-  switch (value) {
-    case 'home':
-      setMenu({
-        home: true,
-        chart: false,
-        message: false,
-        help: false,
-        toggle
-      })
-      break
+  useEffect(() => {}, [])
+  function handleClick(value: string) {
+    switch (value) {
+      case 'home':
+        setMenu({
+          home: true,
+          chart: false,
+          message: false,
+          help: false,
+          theme
+        })
+        break
 
-    case 'chart':
-      setMenu({ home: false, chart: true, message: false, help: false, toggle })
-      break
+      case 'chart':
+        setMenu({
+          home: false,
+          chart: true,
+          message: false,
+          help: false,
+          theme
+        })
+        break
 
-    case 'message':
-      setMenu({ home: false, chart: false, message: true, help: false, toggle })
-      break
+      case 'message':
+        setMenu({
+          home: false,
+          chart: false,
+          message: true,
+          help: false,
+          theme
+        })
+        break
 
-    case 'help':
-      setMenu({ home: false, chart: false, message: false, help: true, toggle })
-      break
+      case 'help':
+        setMenu({
+          home: false,
+          chart: false,
+          message: false,
+          help: true,
+          theme
+        })
+        break
 
-    default:
-      menu.home = false
-      menu.chart = false
-      menu.message = false
-      menu.help = false
-      menu.toggle = toggle
-      break
+      default:
+        menu.home = false
+        menu.chart = false
+        menu.message = false
+        menu.help = false
+        menu.theme = theme
+        break
+    }
+  }
+  function toggleTheme() {
+    changeTheme()
+    setTheme(!theme)
   }
 
   return (
-    <Container>
-      <Nav className={dropdown ? 'dropdown' : ''}>
+    <Container className={dropdown ? '' : 'dropdown'}>
+      <Nav>
         <LogoMenu>
           <Logo />
           {dropdown ? <h1>Vigilantes do sono</h1> : ''}
         </LogoMenu>
         <NavMenu>
           <NavLink
+            className={menu.home ? 'on' : ''}
             onClick={() => {
-              setValue('home')
+              handleClick('home')
             }}
             to='/'>
-            Home
+            <span className={dropdown ? 'dropdown' : ''}>
+              {menu.home ? <BsHouseFill /> : <BsHouse />}
+            </span>
+            {dropdown ? 'Home' : ''}
           </NavLink>
           <NavLink
+            className={menu.chart ? 'on' : ''}
             onClick={() => {
-              setValue('chart')
+              handleClick('chart')
             }}
             to='/chart'>
-            Gráfico
+            <span className={dropdown ? 'dropdown' : ''}>
+              {menu.chart ? <BsBarChartFill /> : <BsBarChart />}
+            </span>
+            {dropdown ? 'Gráfico' : ''}
           </NavLink>
           <NavLink
+            className={menu.message ? 'on' : ''}
             onClick={() => {
-              setValue('message')
+              handleClick('message')
             }}
             to='/message'>
-            Mensagem
+            <span className={dropdown ? 'dropdown' : ''}>
+              {menu.message ? (
+                <BsFillEnvelopeOpenFill />
+              ) : (
+                <BsFillEnvelopeFill />
+              )}
+            </span>
+            {dropdown ? 'Mensagem' : ''}
           </NavLink>
           <NavLink
+            className={menu.help ? 'on' : ''}
             onClick={() => {
-              setValue('help')
+              handleClick('help')
             }}
             to='/help'>
-            Ajuda
+            <span className={dropdown ? 'dropdown' : ''}>
+              <BsQuestion />
+            </span>
+            {dropdown ? 'Ajuda' : ''}
           </NavLink>
         </NavMenu>
         <ThemeBox>
-          <ThemeButton
-            onClick={() => {
-              setToggle(!toggle)
-            }}
-            type='button'>
-            teste
+          <ThemeButton onClick={toggleTheme} type='button'>
+            <BsSunFill className='sun' />
+            {theme ? <BsToggle2On /> : <BsToggle2Off />}
+            <BsMoonStarsFill className='moon' />
           </ThemeButton>
         </ThemeBox>
       </Nav>
@@ -113,7 +169,7 @@ export default function Menu({ changeTheme }: ITheme) {
           setDropdown(!dropdown)
         }}
         type='button'>
-        <BsArrowLeft />
+        {dropdown ? <BsFillCaretLeftFill /> : <BsFillCaretRightFill />}
       </Dropdown>
     </Container>
   )
