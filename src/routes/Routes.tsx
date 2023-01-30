@@ -15,6 +15,7 @@ export default function Router() {
   function changeTheme() {
     setTheme(!theme)
   }
+  const [theme, setTheme] = useState(true)
   return (
     <ThemeProvider theme={theme ? lightTheme : DarkTheme}>
       <BrowserRouter>
