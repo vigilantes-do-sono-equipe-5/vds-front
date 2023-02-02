@@ -1,17 +1,11 @@
-
-import Logo from '../../assets/Logo'
-
-import Calendary from '../../components/Calendary'
+import Calendar from '../../components/Calendar'
 
 import { Container } from './styled'
 
 export default function Home() {
   return (
     <Container>
-
-      Home
-      <Logo />
-      <Calendary />
+      <Calendar />
     </Container>
   )
 }
