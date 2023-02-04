@@ -15,5 +15,9 @@ declare module 'styled-components' {
       accessory: string
       background: string
     }
+    menu: {
+      box: string
+      text: string
+    }
   }
 }

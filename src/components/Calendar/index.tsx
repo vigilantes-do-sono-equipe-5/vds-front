@@ -1,93 +1,51 @@
-import {
-  add,
-  eachDayOfInterval,
-  endOfMonth,
-  endOfWeek,
-  format,
-  parse,
-  setDefaultOptions,
-  startOfToday,
-  startOfWeek
-} from 'date-fns'
+import { format, parse, setDefaultOptions } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
-import { useState } from 'react'
-import { BsCaretLeftFill, BsCaretRightFill } from 'react-icons/bs'
-import {
-  BoxButton,
-  BoxCalendar,
-  ButtonCalendar,
-  Calendary,
-  Container,
-  DaysWeeks,
-  Icon,
-  Weeks
-} from './styled'
+import { useEffect, useState } from 'react'
+import BoxMonth from './ButtonMonth/ButtonMonth'
+import ButtonMonth from './Buttons/Buttons'
+import MonthView from './MonthView'
+import { BoxButton, BoxCalendar, Calendary, Container } from './styled'
 
 setDefaultOptions({ locale: ptBR })
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+interface ISelect {
+  Week: boolean
+  Month: boolean
+}
+
 export default function Calendar() {
-  const today = startOfToday()
-  const dayWeek = eachDayOfInterval({
-    start: startOfWeek(today),
-    end: endOfWeek(today)
-  })
-
+  const today = new Date()
+  const [month, setMonth] = useState(format(today, 'MMMM - yyyy'))
+  const [currentMonth, setCurrentMonth] = useState(new Date())
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [week, setWeek] = useState<string[]>([])
+  const [select, setSelect] = useState<boolean>(false)
 
-  function getWeek(value: Date) {
-    const data = eachDayOfInterval({
-      start: startOfWeek(value),
-      end: endOfWeek(value)
-    })
+  useEffect(() => {
+    const firstDayCurrentMonth = parse(month, 'MMMM - yyyy', new Date())
+    setCurrentMonth(firstDayCurrentMonth)
+  }, [month])
 
-    const dados = data.map(el => format(el, 'y-M-d'))
-
-    setWeek(dados)
-  }
-
-  const [currentMonth, setCurrentMonth] = useState(format(today, 'MMMM - yyyy'))
-  const firstDayCurrentMonth = parse(currentMonth, 'MMMM - yyyy', new Date())
-
-  const date = eachDayOfInterval({
-    start: startOfWeek(firstDayCurrentMonth),
-    end: endOfWeek(endOfMonth(firstDayCurrentMonth))
-  })
-
-  function nextMonth() {
-    const firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 })
-    setCurrentMonth(format(firstDayNextMonth, 'MMMM - yyyy'))
-  }
-
-  function backMonth() {
-    const firstDayBackMonth = add(firstDayCurrentMonth, { months: -1 })
-    setCurrentMonth(format(firstDayBackMonth, 'MMMM - yyyy'))
+  function changeMonth(date: string) {
+    setMonth(date)
   }
 
   return (
     <Container>
-      <BoxCalendar>
-        <ButtonCalendar>
-          {currentMonth}
-          <Icon type='button'>
-            <BsCaretLeftFill onClick={backMonth} />
-            <BsCaretRightFill onClick={nextMonth} />
-          </Icon>
-        </ButtonCalendar>
-        <Calendary>
-          {dayWeek.map(el => (
-            <DaysWeeks key={el.toString()}>{format(el, 'EEEEE')}</DaysWeeks>
-          ))}
-          {date.map(day => (
-            <Weeks
-              key={day.toString()}
-              onClick={() => getWeek(day)}
-              type='button'>
-              {format(day, 'd')}
-            </Weeks>
-          ))}
-        </Calendary>
-      </BoxCalendar>
+      {select ? (
+        <MonthView />
+      ) : (
+        <BoxCalendar>
+          <ButtonMonth
+            changeMonth={changeMonth}
+            today={today}
+            firstDayCurrentMonth={currentMonth}
+          />
+          <Calendary>
+            <BoxMonth firstDayCurrentMonth={currentMonth} />
+          </Calendary>
+        </BoxCalendar>
+      )}
       <BoxButton />
     </Container>
   )

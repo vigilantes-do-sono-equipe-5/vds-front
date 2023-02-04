@@ -13,7 +13,7 @@ export const Container = styled.aside`
   width: 100%;
   max-width: 21rem;
 
-  background: ${props => props.theme.colors.background};
+  background: ${props => props.theme.menu.box};
 
   &.dropdown {
     width: 8rem;
@@ -28,7 +28,7 @@ export const Nav = styled.div`
   padding: 2rem 0;
   width: 100%;
   height: 100%;
-  color: ${props => props.theme.colors.text};
+  color: ${props => props.theme.menu.text};
 `
 
 export const LogoMenu = styled.div`
@@ -69,7 +69,7 @@ export const NavLink = styled(Link)`
   height: 5rem;
   width: 100%;
 
-  color: ${props => props.theme.colors.text};
+  color: ${props => props.theme.menu.text};
 
   &:hover {
     width: 100%;
@@ -102,7 +102,7 @@ export const Icon = styled.span`
 export const Dropdown = styled.button`
   background-color: rgba(0, 0, 0, 0);
   border: none;
-  color: ${props => props.theme.colors.text};
+  color: ${props => props.theme.menu.text};
   font-size: 2rem;
   z-index: 100;
 `
@@ -114,7 +114,7 @@ export const ThemeBox = styled.div`
 `
 export const ThemeButton = styled.button`
   background-color: rgba(0, 0, 0, 0);
-  color: ${props => props.theme.colors.text};
+  color: ${props => props.theme.menu.text};
   border: none;
   font-size: 2rem;
   width: 8rem;
