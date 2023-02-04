@@ -20,7 +20,7 @@ export const BoxCalendar = styled.div`
   padding: 1rem;
 `
 
-export const Calendary = styled.div`
+export const BoxMonth = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   justify-content: center;
@@ -30,6 +30,14 @@ export const Calendary = styled.div`
   padding: 0.5rem;
   width: 15rem;
   height: 15rem;
+`
+
+export const BoxYear = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  padding: 1rem;
 `
 
 export const BoxButton = styled.div`

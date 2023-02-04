@@ -1,23 +1,43 @@
-import { eachMonthOfInterval, endOfMonth, format } from 'date-fns'
+import {
+  eachDayOfInterval,
+  eachMonthOfInterval,
+  endOfDay,
+  endOfMonth,
+  endOfYear,
+  format,
+  startOfDay,
+  startOfYear
+} from 'date-fns'
 import startOfMonth from 'date-fns/startOfMonth'
-import { MonthBox } from './styled'
+import { useEffect, useState } from 'react'
+import { Month, MonthBox } from './styled'
 
 export default function MonthView() {
-  // const today = new Date()
+  const today = new Date()
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // const [month, setMonth] = useState(format(today, 'MMMM - yyyy'))
+  const [month, setMonth] = useState(today)
+  const [daysInMonth, setDaysInMonth] = useState<string[]>([])
 
   const months = eachMonthOfInterval({
-    start: startOfMonth(1),
-    end: endOfMonth(12)
+    start: startOfMonth(startOfYear(today)),
+    end: endOfMonth(endOfYear(today))
   })
-  months.map(el => console.log(format(el, 'MMMM')))
+  useEffect(() => {
+    const Days = eachDayOfInterval({
+      start: startOfDay(startOfMonth(month)),
+      end: endOfDay(endOfMonth(month))
+    })
+    const date = Days.map(el => format(el, 'd-M-yyyy'))
+    setDaysInMonth(date)
+  }, [month])
 
   return (
     <>
       <MonthBox>
         {months.map(el => (
-          <div key={el.toString()}>{format(el, 'MMMM')}</div>
+          <Month key={el.toString()} onClick={() => setMonth(el)}>
+            <div>{format(el, 'MMMM')}</div>
+          </Month>
         ))}
       </MonthBox>
     </>
