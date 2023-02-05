@@ -1,7 +1,6 @@
 import 'styled-components'
 declare module 'styled-components' {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  export interface DefaultTheme {
+  export interface IDefaultTheme {
     colors: {
       success: string
       error: string
@@ -14,7 +13,7 @@ declare module 'styled-components' {
       callToAction: string
       accessory: string
       background: string
-      backgroundCalendary: string
+      // backgroundCalendary: string
     }
   }
 }
