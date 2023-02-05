@@ -4,11 +4,16 @@ import { useEffect, useState } from 'react'
 import BoxDays from './BoxDays'
 import ButtonsCalendar from './ButtonsCalendar'
 import MonthView from './MonthView'
-import { BoxButton, BoxCalendar, BoxMonth, Container } from './styled'
+import {
+  BoxButton,
+  BoxCalendar,
+  BoxMonth,
+  Container,
+  SelectionButtons
+} from './styled'
 
 setDefaultOptions({ locale: ptBR })
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface ISelect {
   Week: boolean
   Month: boolean
@@ -16,44 +21,65 @@ interface ISelect {
 
 export default function Calendar() {
   const today = new Date()
-
+  const [currentDate, setCurrentDate] = useState<Date>(new Date())
   const [month, setMonth] = useState(format(today, 'MMMM - yyyy'))
-  // const [year, setYear] = useState(format(today, 'yyyy'))
-  const [currentDate, setCurrentDate] = useState(new Date())
+  const [year, setYear] = useState(format(today, 'yyyy'))
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [select, setSelect] = useState<boolean>(false)
+  const [select, setSelect] = useState(true)
 
   useEffect(() => {
-    const firstDayCurrentMonth = parse(month, 'MMMM - yyyy', new Date())
-    setCurrentDate(firstDayCurrentMonth)
-  }, [month])
+    if (select) {
+      const firstDayCurrentMonth = parse(month, 'MMMM - yyyy', new Date())
+      setCurrentDate(firstDayCurrentMonth)
+    } else {
+      const firstDayCurrentMonth = parse(year, 'yyyy', new Date())
+      setCurrentDate(firstDayCurrentMonth)
+    }
+  }, [month, select, year])
 
   function changeMonth(date: string) {
     setMonth(date)
   }
 
   function changeYear(date: string) {
-    // setYear(date)
+    setYear(date)
+  }
+  function selectButton(value: string) {
+    if (value === 'week') {
+      setMonth(format(new Date(), 'MMMM - yyyy'))
+      setSelect(true)
+    } else if (value === 'month') {
+      setYear(format(new Date(), 'yyyy'))
+      setSelect(false)
+    }
   }
 
   return (
     <Container>
       <BoxCalendar>
         <ButtonsCalendar
-          changeMonth={select ? changeMonth : changeYear}
+          changeYear={changeYear}
+          changeMonth={changeMonth}
           today={today}
           firstDayCurrentMonth={currentDate}
+          select={select}
         />
         {select ? (
-          <MonthView />
-        ) : (
           <BoxMonth>
             <BoxDays firstDayCurrentMonth={currentDate} />
           </BoxMonth>
+        ) : (
+          <MonthView />
         )}
       </BoxCalendar>
-      <BoxButton onClick={() => setSelect(!select)}>Select</BoxButton>
+      <BoxButton>
+        <SelectionButtons onClick={() => selectButton('week')}>
+          Semana
+        </SelectionButtons>
+        <SelectionButtons onClick={() => selectButton('month')}>
+          Meses
+        </SelectionButtons>
+      </BoxButton>
     </Container>
   )
 }

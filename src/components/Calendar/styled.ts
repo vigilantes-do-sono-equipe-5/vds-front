@@ -43,3 +43,8 @@ export const BoxYear = styled.div`
 export const BoxButton = styled.div`
   width: 10rem;
 `
+
+export const SelectionButtons = styled.button`
+  width: 5rem;
+  height: 5rem;
+`
