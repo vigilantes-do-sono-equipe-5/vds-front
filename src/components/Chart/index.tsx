@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-no-bind */
+import { v4 as uuidv4 } from 'uuid'
 import { useEffect, useState } from 'react'
 import {
   Square,
@@ -25,39 +25,46 @@ import { Bar } from 'react-chartjs-2'
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
 
-export default function Chart() {
+export default function Chart(): JSX.Element {
   interface IData {
+    id: string
     name: string
     percent: number
     color: string
   }
   const Data: IData[] = [
     {
+      id: uuidv4(),
       name: 'Sono',
       percent: 5,
       color: 'red'
     },
     {
+      id: uuidv4(),
       name: 'Sono',
       percent: 10,
       color: 'orange'
     },
     {
+      id: uuidv4(),
       name: 'Sono',
       percent: 15,
       color: 'yellow'
     },
     {
+      id: uuidv4(),
       name: 'Sono',
       percent: 20,
       color: 'green'
     },
     {
+      id: uuidv4(),
       name: 'Sono',
       percent: 25,
       color: 'blue'
     },
     {
+      id: uuidv4(),
       name: 'Sono',
       percent: 25,
       color: 'indigo'
@@ -68,7 +75,7 @@ export default function Chart() {
     labels: ['', '', '', '', '', ''],
     datasets: [
       {
-        label: ['Sono'],
+        label: 'Sono',
         data: [5, 10, 15, 20, 25, 25],
         backgroundColor: ['red', 'orange', 'yellow', 'green', 'blue', 'indigo'],
         borderColor: 'black',
@@ -91,9 +98,8 @@ export default function Chart() {
       <Title>ESTATÍSTICAS DA SEMANA</Title>
       <ChartDiv>
         <LegendDiv>
-          {Data.map((el, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <LegendItem key={index}>
+          {Data.map(el => (
+            <LegendItem key={el.id}>
               <Square color={el.color} />
               <Percentage>
                 {el.name} {el.percent}%
