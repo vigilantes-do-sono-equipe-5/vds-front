@@ -16,7 +16,7 @@ export const Title = styled.span`
   color: #787878;
 `
 export const ChartDiv = styled.div`
-  width: 100%;
+  width: 70%;
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -32,7 +32,8 @@ export const LegendItem = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0.2rem;
+  margin-right: 0.5rem;
 `
 export const Square = styled.div`
   width: 1.6rem;
@@ -50,6 +51,7 @@ export const Time = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  margin-left: 0.5rem;
 `
 export const SelectTimeButton = styled.button`
   display: flex;

@@ -32,7 +32,7 @@ export default function Chart(): JSX.Element {
     percent: number
     color: string
   }
-  const Data: IData[] = [
+  const LegendData: IData[] = [
     {
       id: uuidv4(),
       name: 'Sono',
@@ -71,10 +71,11 @@ export default function Chart(): JSX.Element {
     }
   ]
 
-  const ChartData = {
+  const data = {
     labels: ['', '', '', '', '', ''],
     datasets: [
       {
+        barThickness: 50,
         label: 'Sono',
         data: [5, 10, 15, 20, 25, 25],
         backgroundColor: ['red', 'orange', 'yellow', 'green', 'blue', 'indigo'],
@@ -83,8 +84,6 @@ export default function Chart(): JSX.Element {
       }
     ]
   }
-
-  const options = {}
 
   const [toggle, setToggle] = useState(true)
   const [btnColor, setBtnColor] = useState('#ffffff')
@@ -98,7 +97,7 @@ export default function Chart(): JSX.Element {
       <Title>ESTATÍSTICAS DA SEMANA</Title>
       <ChartDiv>
         <LegendDiv>
-          {Data.map(el => (
+          {LegendData.map(el => (
             <LegendItem key={el.id}>
               <Square color={el.color} />
               <Percentage>
@@ -107,9 +106,23 @@ export default function Chart(): JSX.Element {
             </LegendItem>
           ))}
         </LegendDiv>
-
-        <Bar data={ChartData} options={options} />
-
+        F
+        <Bar
+          data={data}
+          options={{
+            aspectRatio: 2,
+            responsive: true,
+            layout: { padding: { right: 10 } },
+            plugins: {
+              title: {
+                display: true
+              },
+              legend: {
+                display: false
+              }
+            }
+          }}
+        />
         <Time>
           <Title>GRÁFICO</Title>
           <SelectTimeButton
