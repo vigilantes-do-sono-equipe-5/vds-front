@@ -27,6 +27,7 @@ export const LegendDiv = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  color: black;
 `
 export const LegendItem = styled.div`
   display: flex;
@@ -36,8 +37,8 @@ export const LegendItem = styled.div`
   margin-right: 0.5rem;
 `
 export const Square = styled.div`
-  width: 1.6rem;
-  height: 1.6rem;
+  min-width: 1.6rem;
+  min-height: 1.6rem;
   background-color: ${props => props.color};
   margin-right: 0.8rem;
 `
