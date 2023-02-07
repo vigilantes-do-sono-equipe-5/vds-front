@@ -6,7 +6,7 @@
 },
 "extends": [
     "eslint:recommended",
-    "plugin:react/all",
+    "plugin:react/recommended",
     "standard-with-typescript",
     "plugin:prettier/recommended",
     "plugin:react-hooks/recommended"
@@ -36,6 +36,7 @@
     "react/forbid-component-props": "off",
     "react/jsx-no-bind": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/no-confusing-void-expression": "off",
     "@typescript-eslint/explicit-function-return-type": "off",

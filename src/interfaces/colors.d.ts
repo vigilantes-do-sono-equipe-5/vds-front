@@ -13,7 +13,10 @@ declare module 'styled-components' {
       callToAction: string
       accessory: string
       background: string
-      // backgroundCalendary: string
+    }
+    menu: {
+      box: string
+      text: string
     }
   }
 }
