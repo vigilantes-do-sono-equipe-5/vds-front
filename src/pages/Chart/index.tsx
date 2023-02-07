@@ -1,5 +1,10 @@
 import { Container } from './styled'
+import ChartComponent from '../../components/Chart'
 
 export default function Chart() {
-  return <Container>Chart</Container>
+  return (
+    <Container>
+      <ChartComponent />
+    </Container>
+  )
 }
