@@ -3,8 +3,8 @@ import styled from 'styled-components'
 export const ChartContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 68%;
-  height: 50%;
+  max-width: 50rem;
+  max-height: 25rem;
   padding: 1.9rem 1.25rem 1.9rem 1.25rem;
   border-radius: 1.875rem;
   background-color: white;
@@ -17,8 +17,9 @@ export const Title = styled.span`
 `
 export const ChartDiv = styled.div`
   width: 70%;
-  height: 100%;
+  max-height: 100%;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem;
@@ -26,7 +27,8 @@ export const ChartDiv = styled.div`
 export const LegendDiv = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  max-height: 100%;
+  max-width: 50%;
   color: black;
 `
 export const LegendItem = styled.div`
@@ -35,6 +37,7 @@ export const LegendItem = styled.div`
   align-items: center;
   padding: 0.2rem;
   margin-right: 0.5rem;
+  max-height: 80%;
 `
 export const Square = styled.div`
   min-width: 1.6rem;
