@@ -2,12 +2,16 @@ import styled from 'styled-components'
 
 export const SContainer = styled.div`
   display: flex;
+  flex-direction: column;
+`
+
+export const SContainerInternal = styled.div`
+  display: flex;
   flex-direction: row;
   align-items: center;
   gap: 2rem;
-  margin: 20rem 0 20rem 0;
+  height: 90vh;
 `
-
 export const SBlockOne = styled.div`
   display: flex;
   flex-direction: column;

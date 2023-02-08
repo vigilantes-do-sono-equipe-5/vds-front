@@ -1,7 +1,18 @@
 import { useState } from 'react'
 import { SContainer } from './style'
 
-function ConfigDashboard(): JSX.Element {
+interface IProps {
+  setSwitchComponent: React.Dispatch<
+    React.SetStateAction<{
+      config: boolean
+      main: boolean
+      evaluations: boolean
+      goals: boolean
+    }>
+  >
+}
+
+function ConfigDashboard({ setSwitchComponent }: IProps): JSX.Element {
   const [mockEmpresas, setMockEmpresas] = useState([
     { id: 1, name: 'Empresa X' },
     { id: 2, name: 'Empresa y' },
@@ -33,7 +44,17 @@ function ConfigDashboard(): JSX.Element {
           </fieldset>
         </div>
 
-        <button>Próximo</button>
+        <button
+          onClick={() => {
+            setSwitchComponent({
+              config: false,
+              main: true,
+              evaluations: false,
+              goals: false
+            })
+          }}>
+          Próximo
+        </button>
       </SContainer>
     </>
   )
