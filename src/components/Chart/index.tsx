@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid'
 import { useEffect, useState } from 'react'
 import {
   Square,
@@ -25,60 +24,34 @@ import { Bar } from 'react-chartjs-2'
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
 
-export default function Chart(): JSX.Element {
-  interface IData {
-    id: string
-    name: string
-    percent: number
-    color: string
-  }
-  const LegendData: IData[] = [
-    {
-      id: uuidv4(),
-      name: 'Sono',
-      percent: 5,
-      color: 'red'
-    },
-    {
-      id: uuidv4(),
-      name: 'Sono',
-      percent: 10,
-      color: 'orange'
-    },
-    {
-      id: uuidv4(),
-      name: 'Sono',
-      percent: 15,
-      color: 'yellow'
-    },
-    {
-      id: uuidv4(),
-      name: 'Sono',
-      percent: 20,
-      color: 'green'
-    },
-    {
-      id: uuidv4(),
-      name: 'Sono',
-      percent: 25,
-      color: 'blue'
-    },
-    {
-      id: uuidv4(),
-      name: 'Sono',
-      percent: 25,
-      color: 'indigo'
-    }
-  ]
+export interface IData {
+  id: string
+  name: string
+  percent: number
+  color: string
+}
 
+interface IProps {
+  legendData: IData[]
+  graficName: string
+  switchTime: boolean
+}
+export default function Chart({
+  legendData,
+  graficName,
+  switchTime
+}: IProps): JSX.Element {
+  const backgroundColor = legendData.map(e => e.color)
+  const labels = legendData.map(e => e.name)
+  const valueGrafic = legendData.map(e => e.percent)
   const data = {
-    labels: ['', '', '', '', '', ''],
+    labels,
     datasets: [
       {
         barThickness: 50,
-        label: 'Sono',
-        data: [5, 10, 15, 20, 25, 25],
-        backgroundColor: ['red', 'orange', 'yellow', 'green', 'blue', 'indigo'],
+        label: 'teste',
+        data: valueGrafic,
+        backgroundColor,
         borderColor: 'black',
         borderWidth: 1
       }
@@ -94,19 +67,19 @@ export default function Chart(): JSX.Element {
 
   return (
     <ChartContainer>
-      <Title>ESTATÍSTICAS DA SEMANA</Title>
+      <Title>{graficName}</Title>
       <ChartDiv>
         <LegendDiv>
-          {LegendData.map(el => (
+          {legendData.map((el: IData) => (
             <LegendItem key={el.id}>
               <Square color={el.color} />
               <Percentage>
-                {el.name} {el.percent}%
+                {''} {el.percent}
               </Percentage>
             </LegendItem>
           ))}
         </LegendDiv>
-        F
+
         <Bar
           data={data}
           options={{
@@ -123,33 +96,34 @@ export default function Chart(): JSX.Element {
             }
           }}
         />
-        <Time>
-          <Title>GRÁFICO</Title>
-          <SelectTimeButton
-            color={btnColor}
-            onClick={e => {
-              setToggle(state => !state)
-            }}>
-            <Dash />
-            <span>Barra</span>
-          </SelectTimeButton>
-          <SelectTimeButton
-            color={btnColor}
-            onClick={e => {
-              setToggle(state => !state)
-            }}>
-            <Dash />
-            <span>Pizza</span>
-          </SelectTimeButton>
-          <SelectTimeButton
-            color={btnColor}
-            onClick={e => {
-              setToggle(state => !state)
-            }}>
-            <Dash />
-            <span>Polar</span>
-          </SelectTimeButton>
-        </Time>
+        {switchTime && (
+          <Time>
+            <SelectTimeButton
+              color={btnColor}
+              onClick={e => {
+                setToggle(state => !state)
+              }}>
+              <Dash />
+              <span>Barra</span>
+            </SelectTimeButton>
+            <SelectTimeButton
+              color={btnColor}
+              onClick={e => {
+                setToggle(state => !state)
+              }}>
+              <Dash />
+              <span>Pizza</span>
+            </SelectTimeButton>
+            <SelectTimeButton
+              color={btnColor}
+              onClick={e => {
+                setToggle(state => !state)
+              }}>
+              <Dash />
+              <span>Polar</span>
+            </SelectTimeButton>
+          </Time>
+        )}
       </ChartDiv>
     </ChartContainer>
   )
