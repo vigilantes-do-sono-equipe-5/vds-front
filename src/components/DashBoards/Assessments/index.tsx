@@ -37,29 +37,27 @@ const legendData: IData[] = [
 
 function Assessments() {
   return (
-    <>
-      <SContainer>
-        <SBlockOne>
-          <SGrade>
-            <h2>4,61</h2>
-            <img
-              width={'25rem'}
-              height={'25rem'}
-              src='https://cdn.discordapp.com/attachments/985645895779508254/1072690622877679696/star.png'
-              alt='star'
-            />
-          </SGrade>
+    <SContainer>
+      <SBlockOne>
+        <SGrade>
+          <h2>4,61</h2>
+          <img
+            width={'25rem'}
+            height={'25rem'}
+            src='https://cdn.discordapp.com/attachments/985645895779508254/1072690622877679696/star.png'
+            alt='star'
+          />
+        </SGrade>
 
-          <h2>Nota média das Sessões</h2>
+        <h2>Nota média das Sessões</h2>
 
-          <h4>De {2298} sessões realizadas</h4>
-        </SBlockOne>
+        <h4>De {2298} sessões realizadas</h4>
+      </SBlockOne>
 
-        <div id='sizeChart'>
-          <Chart legendData={legendData} graficName={''} switchTime={true} />
-        </div>
-      </SContainer>
-    </>
+      <div id='sizeChart'>
+        <Chart legendData={legendData} graficName={''} switchTime={true} />
+      </div>
+    </SContainer>
   )
 }
 

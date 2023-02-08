@@ -5,9 +5,9 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   height: 100vh;
   width: 100%;
+  overflow-y: scroll;
 
   background: ${props => props.theme.colors.background};
   color: ${props => props.theme.colors.text};
