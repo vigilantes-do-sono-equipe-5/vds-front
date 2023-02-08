@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid'
+// import { v4 as uuidv4 } from 'uuid'
 import { useEffect, useState } from 'react'
 import {
   Square,
@@ -34,59 +34,70 @@ export default function Chart(): JSX.Element {
   }
   const LegendData: IData[] = [
     {
-      id: uuidv4(),
+      id: 'abcd1',
       name: 'Sono',
       percent: 5,
       color: 'red'
     },
     {
-      id: uuidv4(),
-      name: 'Sono',
+      id: 'abcd2',
+      name: 'Aaaa',
       percent: 10,
       color: 'orange'
     },
     {
-      id: uuidv4(),
-      name: 'Sono',
+      id: 'abcd3',
+      name: 'Bbbb',
       percent: 15,
       color: 'yellow'
     },
     {
-      id: uuidv4(),
-      name: 'Sono',
+      id: 'abcd4',
+      name: 'Cccc',
       percent: 20,
       color: 'green'
     },
     {
-      id: uuidv4(),
-      name: 'Sono',
+      id: 'abcd5',
+      name: 'Dddd',
       percent: 25,
       color: 'blue'
     },
     {
-      id: uuidv4(),
-      name: 'Sono',
+      id: 'abcd6',
+      name: 'Eeee',
       percent: 25,
       color: 'indigo'
     }
   ]
 
-  const data = {
-    labels: ['', '', '', '', '', ''],
-    datasets: [
+  // Função para enviar os datos formatados para o gráfico do jeito que ele pede com as labels e os datasets
+  const formatData = (data: IData[]) => {
+    const labels = ['', '', '', '', '', '']
+    const datasets = [
       {
         barThickness: 50,
-        label: 'Sono',
-        data: [5, 10, 15, 20, 25, 25],
-        backgroundColor: ['red', 'orange', 'yellow', 'green', 'blue', 'indigo'],
+        label: 'My Data',
+        data: data.map(item => item.percent),
+        backgroundColor: data.map(item => item.color),
         borderColor: 'black',
         borderWidth: 1
       }
     ]
+    return { labels, datasets }
   }
 
   const [toggle, setToggle] = useState(true)
   const [btnColor, setBtnColor] = useState('#ffffff')
+  const [selectedItems, setSelectedItems] = useState<string[]>([])
+
+  const handleCheckboxChange = (id: string) => {
+    if (selectedItems.includes(id)) {
+      setSelectedItems(selectedItems.filter(i => i !== id))
+    } else {
+      setSelectedItems([...selectedItems, id])
+    }
+  }
 
   useEffect(() => {
     setBtnColor(state => (toggle ? '#ffffff' : '#aea0f8'))
@@ -99,6 +110,12 @@ export default function Chart(): JSX.Element {
         <LegendDiv>
           {LegendData.map(el => (
             <LegendItem key={el.id}>
+              <input
+                checked={selectedItems.includes(el.id)}
+                onChange={() => handleCheckboxChange(el.id)}
+                type='checkbox'
+              />
+
               <Square color={el.color} />
               <Percentage>
                 {el.name} {el.percent}%
@@ -108,7 +125,9 @@ export default function Chart(): JSX.Element {
         </LegendDiv>
         F
         <Bar
-          data={data}
+          data={formatData(
+            LegendData.filter(item => selectedItems.includes(item.id))
+          )}
           options={{
             aspectRatio: 2,
             responsive: true,
