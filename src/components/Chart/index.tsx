@@ -10,6 +10,7 @@ import {
 } from './styled'
 import { BarChart } from './BarChart'
 import { PolarChart } from './PolarChart'
+import { PieChart } from './PieChart'
 
 export default function Chart(): JSX.Element {
   interface IOptions {
@@ -28,6 +29,7 @@ export default function Chart(): JSX.Element {
         <Menu />
         <BarChart />
         <PolarChart />
+        <PieChart />
         <Time>
           <h2>GRÁFICO</h2>
           {ChartOptions.map(el => (
