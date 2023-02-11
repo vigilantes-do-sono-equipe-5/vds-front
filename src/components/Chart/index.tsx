@@ -11,6 +11,15 @@ import {
 import { BarChart } from './BarChart'
 
 export default function Chart(): JSX.Element {
+  interface IOptions {
+    id: string
+    name: string
+  }
+  const ChartOptions: IOptions[] = [
+    { id: 'Abc1', name: 'Barra' },
+    { id: 'Abc2', name: 'Pizza' },
+    { id: 'Abc3', name: 'Polar' }
+  ]
   return (
     <ChartContainer>
       <Title>ESTATÍSTICAS DA SEMANA</Title>
@@ -19,18 +28,12 @@ export default function Chart(): JSX.Element {
         <BarChart />
         <Time>
           <h2>GRÁFICO</h2>
-          <SelectTimeButton>
-            <Dash />
-            <h3>Barra</h3>
-          </SelectTimeButton>
-          <SelectTimeButton>
-            <Dash />
-            <h3>Pizza</h3>
-          </SelectTimeButton>
-          <SelectTimeButton>
-            <Dash />
-            <h3>Polar</h3>
-          </SelectTimeButton>
+          {ChartOptions.map(el => (
+            <SelectTimeButton key={el.id}>
+              <Dash />
+              <h3>{el.name}</h3>
+            </SelectTimeButton>
+          ))}
         </Time>
       </ChartDiv>
     </ChartContainer>
