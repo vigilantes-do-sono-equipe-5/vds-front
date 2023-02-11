@@ -1,6 +1,6 @@
 import { MenuDiv, MenuItem, Square, Title } from './styled'
 
-export const Menu = () => {
+const NamesChartLine = () => {
   interface IData {
     id: string
     name: string
@@ -35,3 +35,5 @@ export const Menu = () => {
     </MenuDiv>
   )
 }
+
+export default NamesChartLine

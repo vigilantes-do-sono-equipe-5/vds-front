@@ -1,6 +1,6 @@
 import { LegendDiv, LegendItem, Square, Percentage } from './styled'
 
-export const Menu = () => {
+const ChartNames = () => {
   interface IData {
     id: string
     name: string
@@ -58,3 +58,5 @@ export const Menu = () => {
     </LegendDiv>
   )
 }
+
+export default ChartNames

@@ -1,5 +1,5 @@
 // import { v4 as uuidv4 } from 'uuid'
-import { Menu } from './Menu'
+import ChartNames from './ChartNames'
 import {
   ChartContainer,
   ChartDiv,
@@ -8,9 +8,9 @@ import {
   Time,
   Title
 } from './styled'
-import { BarChart } from './BarChart'
-import { PolarChart } from './PolarChart'
-import { PieChart } from './PieChart'
+import BarChart from './BarChart'
+import PolarChart from './PolarChart'
+import PieChart from './PieChart'
 
 export default function Chart(): JSX.Element {
   interface IOptions {
@@ -26,7 +26,7 @@ export default function Chart(): JSX.Element {
     <ChartContainer>
       <Title>ESTATÍSTICAS DA SEMANA</Title>
       <ChartDiv>
-        <Menu />
+        <ChartNames />
         <BarChart />
         <PolarChart />
         <PieChart />

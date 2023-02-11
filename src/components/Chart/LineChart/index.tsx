@@ -1,12 +1,12 @@
 import { Chart as ChartJS, PointElement } from 'chart.js'
 import 'chart.js/auto'
 import { Line } from 'react-chartjs-2'
-import { Menu } from './Menu'
+import NamesChartLine from './NamesChartLine'
 import { ChartContainer } from './styled'
 
 ChartJS.register(PointElement)
 
-export const LineChart = () => {
+const LineChart = () => {
   const formatData = {
     labels: ['', '', '', '', ''],
     datasets: [
@@ -39,7 +39,7 @@ export const LineChart = () => {
 
   return (
     <ChartContainer>
-      <Menu />
+      <NamesChartLine />
       <Line
         data={formatData}
         width={100}
@@ -61,3 +61,5 @@ export const LineChart = () => {
     </ChartContainer>
   )
 }
+
+export default LineChart

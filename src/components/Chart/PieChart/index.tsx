@@ -3,7 +3,7 @@ import { Pie } from 'react-chartjs-2'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-export const PieChart = () => {
+const PieChart = () => {
   const formatData = {
     labels: ['', '', '', '', '', ''],
     datasets: [
@@ -42,3 +42,5 @@ export const PieChart = () => {
     />
   )
 }
+
+export default PieChart

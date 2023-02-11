@@ -10,7 +10,7 @@ import {
 import { Bar } from 'react-chartjs-2'
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
-export const BarChart = () => {
+const BarChart = () => {
   const formatData = {
     labels: ['', '', '', '', '', ''],
     datasets: [
@@ -50,3 +50,5 @@ export const BarChart = () => {
     />
   )
 }
+
+export default BarChart
