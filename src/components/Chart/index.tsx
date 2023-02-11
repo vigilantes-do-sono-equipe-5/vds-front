@@ -1,5 +1,5 @@
 // import { v4 as uuidv4 } from 'uuid'
-import { Menu } from './BarChart/Menu'
+import { Menu } from './Menu'
 import {
   ChartContainer,
   ChartDiv,
@@ -9,6 +9,7 @@ import {
   Title
 } from './styled'
 import { BarChart } from './BarChart'
+import { PolarChart } from './PolarChart'
 
 export default function Chart(): JSX.Element {
   interface IOptions {
@@ -26,6 +27,7 @@ export default function Chart(): JSX.Element {
       <ChartDiv>
         <Menu />
         <BarChart />
+        <PolarChart />
         <Time>
           <h2>GRÁFICO</h2>
           {ChartOptions.map(el => (
