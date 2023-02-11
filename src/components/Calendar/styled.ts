@@ -12,7 +12,7 @@ export const Container = styled.div`
   min-height: 10rem;
   height: 100%;
   max-height: 15rem;
-  background: ${props => props.theme.colors.box};
+  background: ${props => props.theme.box.background};
   color: ${props => props.theme.colors.text};
 `
 

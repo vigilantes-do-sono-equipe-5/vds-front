@@ -14,13 +14,16 @@ export const Container = styled.div`
 
   background: ${props => props.theme.colors.background};
   color: ${props => props.theme.colors.text};
+
   @media screen and (max-width: 1280px) {
     padding: 2rem 2rem;
   }
+
   @media screen and (max-width: 1080px) {
     padding: 2rem 1rem;
   }
 `
+
 export const Client = styled.select`
   min-width: 7rem;
   width: 100%;
@@ -81,7 +84,7 @@ export const BoxChart = styled.div`
     max-width: 40rem;
   }
 `
-export const BoxMiddle = styled.div`
+export const MiddleBox = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 1rem;
@@ -91,6 +94,16 @@ export const BoxMiddle = styled.div`
   height: 100%;
   max-height: 10rem;
   border: 1px solid black;
+`
+
+export const BoxInfo = styled.div`
+  min-width: 10rem;
+  width: 100%;
+  margin: 0 0.5rem;
+  max-width: 30rem;
+  height: 8rem;
+  background-color: white;
+  border-radius: 30px;
 `
 
 export const BottomBox = styled.div`
@@ -103,4 +116,25 @@ export const BottomBox = styled.div`
   height: 100%;
   max-height: 25rem;
   border: 1px solid red;
+`
+
+export const MediaGeral = styled.div`
+  min-width: 10rem;
+  width: 100%;
+  max-width: 40rem;
+  min-height: 15rem;
+  height: 100%;
+  max-height: 25rem;
+  border: 1px solid black;
+`
+
+export const ChartDepre = styled.div`
+  border: 1px solid red;
+  min-width: 15rem;
+  width: 100%;
+  max-width: 60rem;
+  min-height: 15rem;
+  height: 100%;
+  max-height: 25rem;
+  margin-left: 1rem;
 `

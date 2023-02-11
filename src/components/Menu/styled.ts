@@ -13,7 +13,7 @@ export const Container = styled.aside`
   width: 100%;
   max-width: 21rem;
 
-  background: ${props => props.theme.menu.box};
+  background: ${props => props.theme.menu.background};
 
   &.dropdown {
     width: 8rem;

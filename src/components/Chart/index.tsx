@@ -6,149 +6,44 @@ import {
   LinearScale,
   Tooltip
 } from 'chart.js'
-import { useEffect, useState } from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import { BarChart } from './BarChart'
+import Menu from './Menu'
 import {
   ChartContainer,
   ChartDiv,
   Dash,
-  LegendDiv,
-  LegendItem,
-  Percentage,
   SelectTimeButton,
-  Square,
   Time,
   Title
 } from './styled'
 
-import { Bar } from 'react-chartjs-2'
-
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
 
 export default function Chart(): JSX.Element {
-  interface IData {
+  interface IOptions {
     id: string
     name: string
-    percent: number
-    color: string
   }
-  const LegendData: IData[] = [
-    {
-      id: uuidv4(),
-      name: 'Sono',
-      percent: 5,
-      color: 'red'
-    },
-    {
-      id: uuidv4(),
-      name: 'Sono',
-      percent: 10,
-      color: 'orange'
-    },
-    {
-      id: uuidv4(),
-      name: 'Sono',
-      percent: 15,
-      color: 'yellow'
-    },
-    {
-      id: uuidv4(),
-      name: 'Sono',
-      percent: 20,
-      color: 'green'
-    },
-    {
-      id: uuidv4(),
-      name: 'Sono',
-      percent: 25,
-      color: 'blue'
-    },
-    {
-      id: uuidv4(),
-      name: 'Sono',
-      percent: 25,
-      color: 'indigo'
-    }
+
+  const ChartOptions: IOptions[] = [
+    { id: 'Abc1', name: 'Barra' },
+    { id: 'Abc2', name: 'Pizza' },
+    { id: 'Abc3', name: 'Polar' }
   ]
-
-  const data = {
-    labels: ['', '', '', '', '', ''],
-    datasets: [
-      {
-        barThickness: 50,
-        label: 'Sono',
-        data: [5, 10, 15, 20, 25, 25],
-        backgroundColor: ['red', 'orange', 'yellow', 'green', 'blue', 'indigo'],
-        borderColor: 'black',
-        borderWidth: 1
-      }
-    ]
-  }
-
-  const [toggle, setToggle] = useState(true)
-  const [btnColor, setBtnColor] = useState('#ffffff')
-
-  useEffect(() => {
-    setBtnColor(state => (toggle ? '#ffffff' : '#aea0f8'))
-  }, [toggle])
-
   return (
     <ChartContainer>
       <Title>ESTATÍSTICAS DA SEMANA</Title>
       <ChartDiv>
-        <LegendDiv>
-          {LegendData.map(el => (
-            <LegendItem key={el.id}>
-              <Square color={el.color} />
-              <Percentage>
-                {el.name} {el.percent}%
-              </Percentage>
-            </LegendItem>
-          ))}
-        </LegendDiv>
-        F
-        <Bar
-          data={data}
-          options={{
-            aspectRatio: 2,
-            responsive: true,
-            layout: { padding: { right: 10 } },
-            plugins: {
-              title: {
-                display: true
-              },
-              legend: {
-                display: false
-              }
-            }
-          }}
-        />
+        <Menu />
+        <BarChart />
         <Time>
-          <Title>GRÁFICO</Title>
-          <SelectTimeButton
-            color={btnColor}
-            onClick={e => {
-              setToggle(state => !state)
-            }}>
-            <Dash />
-            <span>Barra</span>
-          </SelectTimeButton>
-          <SelectTimeButton
-            color={btnColor}
-            onClick={e => {
-              setToggle(state => !state)
-            }}>
-            <Dash />
-            <span>Pizza</span>
-          </SelectTimeButton>
-          <SelectTimeButton
-            color={btnColor}
-            onClick={e => {
-              setToggle(state => !state)
-            }}>
-            <Dash />
-            <span>Polar</span>
-          </SelectTimeButton>
+          <h2>GRÁFICO</h2>
+          {ChartOptions.map(el => (
+            <SelectTimeButton key={el.id}>
+              <Dash />
+              <h3>{el.name}</h3>
+            </SelectTimeButton>
+          ))}
         </Time>
       </ChartDiv>
     </ChartContainer>

@@ -1,13 +1,13 @@
 import 'styled-components'
 declare module 'styled-components' {
-  export interface IDefaultTheme {
+  export interface DefaultTheme {
     colors: {
       success: string
       error: string
       text: string
       title: string
       line: string
-      box: string
+
       primary: string
       secondary: string
       callToAction: string
@@ -15,8 +15,12 @@ declare module 'styled-components' {
       background: string
     }
     menu: {
-      box: string
+      background: string
       text: string
+    }
+    box: {
+      background: string
+      hover: string
     }
   }
 }
