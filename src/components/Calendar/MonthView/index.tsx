@@ -27,9 +27,10 @@ export default function MonthView() {
       start: startOfDay(startOfMonth(month)),
       end: endOfDay(endOfMonth(month))
     })
-    const date = Days.map(el => format(el, 'd-M-yyyy'))
+    const date = Days.map(el => format(el, 'yyyy-M-d'))
     setDaysInMonth(date)
   }, [month])
+  console.log(daysInMonth)
 
   return (
     <>

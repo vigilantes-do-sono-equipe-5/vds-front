@@ -6,8 +6,12 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 30px;
-  width: 25rem;
-  height: 15rem;
+  min-width: 15rem;
+  width: auto;
+  max-width: 25rem;
+  min-height: 10rem;
+  height: 100%;
+  max-height: 15rem;
   background: ${props => props.theme.colors.box};
   color: ${props => props.theme.colors.text};
 `

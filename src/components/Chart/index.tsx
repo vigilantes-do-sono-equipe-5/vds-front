@@ -1,25 +1,25 @@
-import { v4 as uuidv4 } from 'uuid'
-import { useEffect, useState } from 'react'
 import {
-  Square,
+  BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
+  Tooltip
+} from 'chart.js'
+import { useEffect, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+import {
   ChartContainer,
   ChartDiv,
   Dash,
-  LegendItem,
   LegendDiv,
+  LegendItem,
   Percentage,
   SelectTimeButton,
+  Square,
   Time,
   Title
 } from './styled'
-import {
-  Chart as ChartJS,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-  Tooltip,
-  Legend
-} from 'chart.js'
 
 import { Bar } from 'react-chartjs-2'
 

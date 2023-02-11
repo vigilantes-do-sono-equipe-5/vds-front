@@ -14,5 +14,7 @@ export const Global = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  max-width: 1920px;
+
   height: 100%;
 `

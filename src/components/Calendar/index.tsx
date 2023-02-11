@@ -44,6 +44,7 @@ export default function Calendar() {
   function changeYear(date: string) {
     setYear(date)
   }
+
   function selectButton(value: string) {
     if (value === 'week') {
       setMonth(format(new Date(), 'MMMM - yyyy'))

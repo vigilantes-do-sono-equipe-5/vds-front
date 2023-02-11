@@ -27,7 +27,7 @@ export const Nav = styled.div`
   justify-content: space-between;
   padding: 2rem 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   color: ${props => props.theme.menu.text};
 `
 

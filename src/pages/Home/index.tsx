@@ -1,12 +1,31 @@
 import Calendar from '../../components/Calendar'
-import Chart from '../../components/Chart'
-import { Container } from './styled'
+import {
+  BottomBox,
+  BoxChart,
+  ChartUsers,
+  Client,
+  Container,
+  TopBox
+} from './styled'
 
 export default function Home() {
   return (
     <Container>
-      <Calendar />
-      <Chart />
+      <Client name='empresas'>
+        <option value='Empresa 1'>Empresa 1</option>
+      </Client>
+      <TopBox>
+        <ChartUsers>
+          <Calendar />
+        </ChartUsers>
+        <BoxChart>Usuarios ativos</BoxChart>
+        <BoxChart>Média das sessões</BoxChart>
+      </TopBox>
+
+      <BottomBox>
+        Metas
+        <div></div>
+      </BottomBox>
     </Container>
   )
 }
