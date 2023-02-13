@@ -9,29 +9,28 @@ import {
 import { useEffect, useState } from 'react'
 
 import { Bar } from 'react-chartjs-2'
-import { IData } from '../../../interfaces/Chart.interface'
+import { IChartData } from '../../../interfaces/Chart.interface'
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
-export default function BarChart({ data }: { data: IData[] }) {
+export default function BarChart({ labels, datasets }: IChartData) {
   const [chart, setChart] = useState<string[]>()
   const [number, setNumber] = useState<number[]>()
   const [color, setColor] = useState<string[]>()
 
   useEffect(() => {
-    const name = Array.from(data).map(el => el.name)
-    setChart(name)
-    const datas = Array.from(data).map(el => el.percent)
-    setNumber(datas)
-    const colors = Array.from(data).map(el => el.color)
-    setColor(colors)
-  }, [])
+    setChart(labels)
+    setNumber(datasets.data)
+    setColor(datasets.backgroundColor)
+  }, [chart, number, color])
 
-  const chartData = {
-    labels: ['1 star', '2 star', '3 star', '4 star', '5 star'],
+  console.log(chart)
+
+  const formatData = {
+    labels: chart,
     datasets: [
       {
         barThickness: 30,
-        label: 'Avaliações',
+        label: datasets.label,
         data: number,
         backgroundColor: color
       }
@@ -40,7 +39,7 @@ export default function BarChart({ data }: { data: IData[] }) {
 
   return (
     <Bar
-      data={chartData}
+      data={formatData}
       options={{
         aspectRatio: 2,
         responsive: true,

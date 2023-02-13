@@ -82,7 +82,6 @@ export const MiddleBox = styled.div`
   min-height: 6rem;
   height: 100%;
   max-height: 10rem;
-  border: 1px solid black;
 `
 
 export const BoxInfo = styled.div`

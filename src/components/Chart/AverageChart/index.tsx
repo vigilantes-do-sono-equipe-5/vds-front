@@ -15,7 +15,7 @@ ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
 
 console.log(LegendData)
 
-export default function RatingChart() {
+export default function AverageChart() {
   useEffect(() => {}, [])
   return (
     <ChartContainer>

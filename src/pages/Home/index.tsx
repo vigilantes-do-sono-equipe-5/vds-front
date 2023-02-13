@@ -1,6 +1,9 @@
 import Calendar from '../../components/Calendar'
+import AverageChart from '../../components/Chart/AverageChart'
 import RatingChart from '../../components/Chart/RatingChart'
+import ReportChart from '../../components/Chart/ReportChart'
 import UserChart from '../../components/Chart/UserChart'
+import { IChartData } from '../../interfaces/Chart.interface'
 import {
   BottomBox,
   BoxChart,
@@ -14,6 +17,14 @@ import {
   TopBox
 } from './styled'
 
+const data: IChartData = {
+  labels: ['total'],
+  datasets: {
+    label: 'total',
+    data: [500],
+    backgroundColor: ['blue']
+  }
+}
 export default function Home() {
   return (
     <Container>
@@ -33,12 +44,20 @@ export default function Home() {
         </ChartUsers>
       </TopBox>
       <MiddleBox>
-        <BoxInfo>Total</BoxInfo>
-        <BoxInfo>média</BoxInfo>
-        <BoxInfo>sessão</BoxInfo>
+        <BoxInfo>
+          <ReportChart name='Total de sessões feitas' data={data} />
+        </BoxInfo>
+        <BoxInfo>
+          <ReportChart name='Noites de sono reportadas' data={data} />
+        </BoxInfo>
+        <BoxInfo>
+          <ReportChart name='Técnicas aplicadas' data={data} />
+        </BoxInfo>
       </MiddleBox>
       <BottomBox>
-        <MediaGeral>Metas</MediaGeral>
+        <MediaGeral>
+          <AverageChart />
+        </MediaGeral>
         <ChartDepre>Depre</ChartDepre>
       </BottomBox>
     </Container>

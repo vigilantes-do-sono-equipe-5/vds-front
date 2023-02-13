@@ -1,50 +1,27 @@
-import { IData } from '../../../interfaces/Chart.interface'
-import { LegendDiv, NameItem, Percentage, Square } from './styled'
+import { IChartData } from '../../../interfaces/Chart.interface'
+import { LegendDiv } from './styled'
 
-export const LegendData: IData[] = [
-  {
-    name: 'Sono',
-    percent: 10,
-    color: 'black'
-  },
-  {
-    name: 'Aaaa',
-    percent: 10,
-    color: 'orange'
-  },
-  {
-    name: 'Bbbb',
-    percent: 15,
-    color: 'yellow'
-  },
-  {
-    name: 'Cccc',
-    percent: 20,
-    color: 'green'
-  },
-  {
-    name: 'Dddd',
-    percent: 25,
-    color: 'blue'
-  },
-  {
-    name: 'Eeee',
-    percent: 25,
-    color: 'indigo'
+export const LegendData: IChartData = {
+  labels: ['1 star', '2 star', '3 start', '4 star', '5 star'],
+  datasets: {
+    barThickness: 30,
+    label: 'Rating',
+    data: [5, 4, 8, 10, 50],
+    backgroundColor: ['blue', 'red', 'green', 'yellow', 'purple']
   }
-]
+}
 
 export default function ChartNames() {
   return (
     <LegendDiv>
-      {LegendData.map((el, index) => (
+      {/* {LegendData.map((el, index) => (
         <NameItem key={index}>
           <Square color={el.color} />
           <Percentage>
             {el.name} {el.percent}%
           </Percentage>
         </NameItem>
-      ))}
+      ))} */}
     </LegendDiv>
   )
 }
