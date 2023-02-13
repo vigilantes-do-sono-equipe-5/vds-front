@@ -11,42 +11,42 @@ import { useEffect, useState } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { IData } from '../../../interfaces/Chart.interface'
 
+interface IChartData {
+  type: string
+  labels: string[]
+  datasets: [
+    {
+      barThickness: number
+      label: string
+      data: number[]
+      backgroundColor: string[]
+      borderColor: string
+      borderWidth: number
+    }
+  ]
+}
+
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
 export default function BarChart({ data }: { data: IData[] }) {
-  const [chart, setChart] = useState<string[]>()
-  const [number, setNumber] = useState<number[]>()
-  const [color, setColor] = useState<string[]>()
-  console.log(data)
-
-  useEffect(() => {
-    const name = Array.from(data).map(el => el.name)
-    setChart(name)
-    const datas = Array.from(data).map(el => el.percent)
-    setNumber(datas)
-    const colors = Array.from(data).map(el => el.color)
-    setColor(colors)
-  }, [])
-
-  const chartData = {
-    labels: ['dia 1', 'dia 2', 'dia 3', 'dia 4', 'dia 5', 'dia 6', 'dia 7'],
-    datasets: [
-      {
-        barThickness: 55,
-        label: chart,
-        data: number,
-        backgroundColor: color,
-        borderColor: 'black',
-        borderWidth: 1
-      }
-    ]
+  const chartDataFunction = () => {
+    return {
+      type: 'bar',
+      labels: Array.from(data).map(el => el.name),
+      datasets: [
+        {
+          barThickness: 55,
+          label: '',
+          data: Array.from(data).map(el => el.percent),
+          backgroundColor: Array.from(data).map(el => el.color),
+          borderColor: 'black',
+          borderWidth: 1
+        }
+      ]
+    }
   }
-
-  console.log(chart)
-
   return (
     <Bar
-      // @ts-expect-error
-      data={chartData}
+      data={chartDataFunction()}
       options={{
         aspectRatio: 2,
         responsive: true,
