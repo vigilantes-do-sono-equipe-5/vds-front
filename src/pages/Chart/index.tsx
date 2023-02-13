@@ -1,5 +1,5 @@
-import { Container } from './styled'
 import ChartComponent from '../../components/Chart'
+import { Container } from './styled'
 
 export default function Chart() {
   return (

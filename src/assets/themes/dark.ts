@@ -15,7 +15,7 @@ export const DarkTheme = {
     background: '#1d1841 linear-gradient(315deg, #1d1841 0%, #354991 100%)'
   },
   menu: {
-    box: '#1e0d34',
+    background: '#1e0d34',
     text: '#fff'
   }
 }

@@ -1,6 +1,6 @@
 import 'styled-components'
 declare module 'styled-components' {
-  export interface IDefaultTheme {
+  export interface DefaultTheme {
     colors: {
       success: string
       error: string

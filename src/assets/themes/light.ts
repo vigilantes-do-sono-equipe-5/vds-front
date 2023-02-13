@@ -15,7 +15,7 @@ export const lightTheme = {
     background: '#c7def4'
   },
   menu: {
-    box: '#1e0d34',
+    background: '#1e0d34',
     text: '#fff'
   }
 }
