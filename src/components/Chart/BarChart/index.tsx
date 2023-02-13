@@ -12,41 +12,36 @@ import { Bar } from 'react-chartjs-2'
 import { IData } from '../../../interfaces/Chart.interface'
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
+
 export default function BarChart({ data }: { data: IData[] }) {
   const [chart, setChart] = useState<string[]>()
-  const [number, setNumber] = useState<number[]>()
-  const [color, setColor] = useState<string[]>()
-  console.log(data)
+  const [chartData, setChartData] = useState<number[]>()
+  const [chartColor, setChartColor] = useState<string[]>()
 
   useEffect(() => {
-    const name = Array.from(data).map(el => el.name)
-    setChart(name)
     const datas = Array.from(data).map(el => el.percent)
-    setNumber(datas)
+    setChartData(datas)
     const colors = Array.from(data).map(el => el.color)
-    setColor(colors)
+    setChartColor(colors)
   }, [])
 
-  const chartData = {
+  const formatData = {
     labels: ['dia 1', 'dia 2', 'dia 3', 'dia 4', 'dia 5', 'dia 6', 'dia 7'],
     datasets: [
       {
         barThickness: 55,
-        label: chart,
-        data: number,
-        backgroundColor: color,
+        label: 'label',
+        data: chartData,
+        backgroundColor: chartColor,
         borderColor: 'black',
         borderWidth: 1
       }
     ]
   }
 
-  console.log(chart)
-
   return (
     <Bar
-      // @ts-expect-error
-      data={chartData}
+      data={formatData}
       options={{
         aspectRatio: 2,
         responsive: true,
