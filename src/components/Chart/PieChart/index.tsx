@@ -1,15 +1,15 @@
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js'
 import { Pie } from 'react-chartjs-2'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-export const PieChart = () => {
+export default function PieChart() {
   const formatData = {
     labels: ['', '', '', '', '', ''],
     datasets: [
       {
         label: 'My Data',
-        data: ['5', '10', '15', '20', '25', '25'],
+        data: [5, 10, 15, 20, 25, 25],
         backgroundColor: [
           'red',
           'yellow ',
@@ -29,7 +29,7 @@ export const PieChart = () => {
       options={{
         aspectRatio: 2,
         responsive: true,
-        layout: { padding: { left: 30, right: 30, top: 40, bottom: 20 } },
+        layout: { autoPadding: true },
         plugins: {
           title: {
             display: true

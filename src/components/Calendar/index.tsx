@@ -75,9 +75,11 @@ export default function Calendar() {
       </BoxCalendar>
       <BoxButton>
         <SelectionButtons onClick={() => selectButton('week')}>
+          <span />
           Semana
         </SelectionButtons>
         <SelectionButtons onClick={() => selectButton('month')}>
+          <span />
           Meses
         </SelectionButtons>
       </BoxButton>

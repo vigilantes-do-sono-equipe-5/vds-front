@@ -9,7 +9,7 @@ import { PolarArea } from 'react-chartjs-2'
 
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend)
 
-export const PolarChart = () => {
+export default function PolarChart() {
   const formatData = {
     labels: ['', '', '', '', '', ''],
     datasets: [
@@ -24,8 +24,7 @@ export const PolarChart = () => {
           'blue',
           'indigo'
         ],
-        borderColor: 'black',
-        borderWidth: 1
+        borderColor: 'black'
       }
     ]
   }
@@ -35,7 +34,7 @@ export const PolarChart = () => {
       options={{
         aspectRatio: 2,
         responsive: true,
-        layout: { padding: { left: 30, right: 30, top: 40, bottom: 20 } },
+        layout: { autoPadding: true },
         plugins: {
           title: {
             display: true
