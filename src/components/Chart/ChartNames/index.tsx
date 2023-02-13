@@ -1,5 +1,5 @@
 import { IData } from '../../../interfaces/Chart.interface'
-import { LegendDiv, NameItem, Percentage, Square } from './styled'
+import { LegendDiv, NameItem, Name, Square } from './styled'
 
 export const LegendData: IData[] = [
   {
@@ -40,9 +40,9 @@ export default function ChartNames() {
       {LegendData.map((el, index) => (
         <NameItem key={index}>
           <Square color={el.color} />
-          <Percentage>
+          <Name>
             {el.name} {el.percent}%
-          </Percentage>
+          </Name>
         </NameItem>
       ))}
     </LegendDiv>

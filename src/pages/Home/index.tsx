@@ -1,4 +1,6 @@
 import Calendar from '../../components/Calendar'
+import IsiGadPhq from '../../components/Chart/IsiGadPhq'
+import LineChart from '../../components/Chart/LineChart'
 import RatingChart from '../../components/Chart/RatingChart'
 import {
   BottomBox,
@@ -36,7 +38,9 @@ export default function Home() {
       </MiddleBox>
       <BottomBox>
         <MediaGeral>Metas</MediaGeral>
-        <ChartDepre>Depre</ChartDepre>
+        <ChartDepre>
+          <IsiGadPhq />
+        </ChartDepre>
       </BottomBox>
     </Container>
   )

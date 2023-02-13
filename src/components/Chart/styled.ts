@@ -5,8 +5,7 @@ export const ChartContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 40rem;
-  min-width: 30rem;
+  min-width: 20rem;
   width: 100%;
   max-height: 23rem;
   min-height: 10rem;
