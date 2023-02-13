@@ -30,7 +30,6 @@ export const Client = styled.select`
   max-width: 40rem;
   height: 4rem;
   font-size: 3rem;
-  border: 1px solid red;
   @media screen and (max-width: 1080px) {
     width: 100%;
   }
@@ -46,14 +45,12 @@ export const TopBox = styled.div`
   min-height: 10rem;
   height: 100%;
   max-height: 15rem;
-  border: 1px solid red;
 `
 
 export const ChartUsers = styled.div`
   min-width: 15rem;
   width: 100%;
   max-width: 25rem;
-  border: 1px solid red;
   min-height: 10rem;
   height: 100%;
   max-height: 15rem;
@@ -71,18 +68,10 @@ export const BoxChart = styled.div`
   min-width: 6rem;
   width: 100%;
   max-width: 40rem;
-  /* background-color: white; */
   min-height: 10rem;
   height: 100%;
   max-height: 15rem;
-  font-size: 3rem;
-  border: 1px solid red;
   color: black;
-  @media screen and (min-width: 1080px) {
-    min-width: 6rem;
-    width: 100%;
-    max-width: 40rem;
-  }
 `
 export const MiddleBox = styled.div`
   display: flex;

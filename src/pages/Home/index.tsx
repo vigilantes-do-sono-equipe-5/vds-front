@@ -1,5 +1,6 @@
 import Calendar from '../../components/Calendar'
 import RatingChart from '../../components/Chart/RatingChart'
+import UserChart from '../../components/Chart/UserChart'
 import {
   BottomBox,
   BoxChart,
@@ -21,7 +22,9 @@ export default function Home() {
         <option value='Empresa 2'>Empresa 2</option>
       </Client>
       <TopBox>
-        <BoxChart>{/* <Chart chartName='lineChart' /> */}</BoxChart>
+        <BoxChart>
+          <UserChart />
+        </BoxChart>
         <BoxChart>
           <RatingChart />
         </BoxChart>

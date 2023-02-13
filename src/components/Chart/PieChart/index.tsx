@@ -8,18 +8,9 @@ export default function PieChart() {
     labels: ['', '', '', '', '', ''],
     datasets: [
       {
-        label: 'My Data',
-        data: [5, 10, 15, 20, 25, 25],
-        backgroundColor: [
-          'red',
-          'yellow ',
-          'orange',
-          'green',
-          'blue',
-          'indigo'
-        ],
-        borderColor: 'black',
-        borderWidth: 1
+        label: 'Usuários ativos',
+        data: [60, 40],
+        backgroundColor: ['green', 'blue']
       }
     ]
   }

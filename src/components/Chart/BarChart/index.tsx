@@ -16,7 +16,6 @@ export default function BarChart({ data }: { data: IData[] }) {
   const [chart, setChart] = useState<string[]>()
   const [number, setNumber] = useState<number[]>()
   const [color, setColor] = useState<string[]>()
-  console.log(data)
 
   useEffect(() => {
     const name = Array.from(data).map(el => el.name)
@@ -28,24 +27,19 @@ export default function BarChart({ data }: { data: IData[] }) {
   }, [])
 
   const chartData = {
-    labels: ['dia 1', 'dia 2', 'dia 3', 'dia 4', 'dia 5', 'dia 6', 'dia 7'],
+    labels: ['1 star', '2 star', '3 star', '4 star', '5 star'],
     datasets: [
       {
-        barThickness: 55,
-        label: chart,
+        barThickness: 30,
+        label: 'Avaliações',
         data: number,
-        backgroundColor: color,
-        borderColor: 'black',
-        borderWidth: 1
+        backgroundColor: color
       }
     ]
   }
 
-  console.log(chart)
-
   return (
     <Bar
-      // @ts-expect-error
       data={chartData}
       options={{
         aspectRatio: 2,

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ChartContainer = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -8,12 +8,13 @@ export const ChartContainer = styled.div`
   min-width: 6rem;
   width: 100%;
   max-width: 40rem;
+  background-color: white;
   padding: 1rem;
   min-height: 10rem;
   height: 100%;
-  max-height: 10rem;
+  max-height: 1rem;
   border-radius: 30px;
-  background-color: white;
+  font-size: 3rem;
   color: black;
   @media screen and (max-width: 1400px) {
     flex-direction: column;
@@ -36,6 +37,6 @@ export const BoxChart = styled.div`
   justify-content: center;
   min-width: 10rem;
   width: 100%;
-  max-width: 40rem;
+  max-width: 30rem;
   height: 100%;
 `
