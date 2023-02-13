@@ -17,9 +17,9 @@ export default function ChartNames() {
       {/* {LegendData.map((el, index) => (
         <NameItem key={index}>
           <Square color={el.color} />
-          <Percentage>
+          <Name>
             {el.name} {el.percent}%
-          </Percentage>
+          </Name>
         </NameItem>
       ))} */}
     </LegendDiv>

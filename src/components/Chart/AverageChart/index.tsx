@@ -7,22 +7,27 @@ import {
   Tooltip
 } from 'chart.js'
 import { useEffect } from 'react'
-import BarChart from '../BarChart'
-import { LegendData } from '../ChartNames'
-import { BoxChart, ChartContainer, Title } from './styled'
+import Buttons from '../Buttons'
+import ChartNames from '../ChartNames'
+import { BoxButtons, BoxChart, ChartContainer, ChartDiv, Title } from './styled'
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
-
-console.log(LegendData)
 
 export default function AverageChart() {
   useEffect(() => {}, [])
   return (
     <ChartContainer>
-      <Title>Avaliações da semana</Title>
-      <BoxChart>
-        <BarChart labels={LegendData.labels} datasets={LegendData.datasets} />
-      </BoxChart>
+      <Title>ESTATÍSTICAS DA SEMANA</Title>
+      <ChartDiv>
+        <ChartNames />
+        <BoxChart></BoxChart>
+        <BoxButtons>
+          <h3>Gráficos</h3>
+          <Buttons name={'Barra'} />
+          <Buttons name={'Pizza'} />
+          <Buttons name={'Polar'} />
+        </BoxButtons>
+      </ChartDiv>
     </ChartContainer>
   )
 }

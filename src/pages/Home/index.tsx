@@ -1,5 +1,6 @@
 import Calendar from '../../components/Calendar'
 import AverageChart from '../../components/Chart/AverageChart'
+import IsiGadPhq from '../../components/Chart/IsiGadPhq'
 import RatingChart from '../../components/Chart/RatingChart'
 import ReportChart from '../../components/Chart/ReportChart'
 import UserChart from '../../components/Chart/UserChart'
@@ -58,7 +59,9 @@ export default function Home() {
         <MediaGeral>
           <AverageChart />
         </MediaGeral>
-        <ChartDepre>Depre</ChartDepre>
+        <ChartDepre>
+          <IsiGadPhq />
+        </ChartDepre>
       </BottomBox>
     </Container>
   )
