@@ -7,12 +7,12 @@ export const LegendDiv = styled.div`
   max-height: 15rem;
   min-height: 10rem;
   height: 100%;
-  max-width: 10rem;
+  /* max-width: 10rem; */
   min-width: 2rem;
-  width: 100%;
+  /* width: 100%; */
   color: black;
 `
-export const LegendItem = styled.div`
+export const NameItem = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;

@@ -1,44 +1,23 @@
-// import { v4 as uuidv4 } from 'uuid'
-import ChartNames from './ChartNames'
-import {
-  ChartContainer,
-  ChartDiv,
-  Dash,
-  SelectTimeButton,
-  Time,
-  Title
-} from './styled'
 import BarChart from './BarChart'
-import PolarChart from './PolarChart'
-import PieChart from './PieChart'
+import Buttons from './Buttons'
+import ChartNames, { LegendData } from './ChartNames'
+import { BoxButtons, BoxChart, ChartContainer, ChartDiv, Title } from './styled'
 
-export default function Chart(): JSX.Element {
-  interface IOptions {
-    id: string
-    name: string
-  }
-  const ChartOptions: IOptions[] = [
-    { id: 'Abc1', name: 'Barra' },
-    { id: 'Abc2', name: 'Pizza' },
-    { id: 'Abc3', name: 'Polar' }
-  ]
+export default function Chart() {
   return (
     <ChartContainer>
       <Title>ESTATÍSTICAS DA SEMANA</Title>
       <ChartDiv>
         <ChartNames />
-        <BarChart />
-        <PolarChart />
-        <PieChart />
-        <Time>
-          <h2>GRÁFICO</h2>
-          {ChartOptions.map(el => (
-            <SelectTimeButton key={el.id}>
-              <Dash />
-              <h3>{el.name}</h3>
-            </SelectTimeButton>
-          ))}
-        </Time>
+        <BoxChart>
+          <BarChart data={LegendData} />
+        </BoxChart>
+        <BoxButtons>
+          <h3>Gráficos</h3>
+          <Buttons name={'Barra'} />
+          <Buttons name={'Pizza'} />
+          <Buttons name={'Polar'} />
+        </BoxButtons>
       </ChartDiv>
     </ChartContainer>
   )

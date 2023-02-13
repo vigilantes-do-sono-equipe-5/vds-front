@@ -1,16 +1,16 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 export const ChartContainer = styled.div`
-  max-width: 55rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 40rem;
   min-width: 30rem;
   width: 100%;
   max-height: 23rem;
   min-height: 10rem;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
   border-radius: 1.875rem;
   background-color: white;
   & h2 {
@@ -22,23 +22,34 @@ export const ChartContainer = styled.div`
   }
 `
 export const Title = styled.h1`
+  padding-left: 1rem;
+  margin-top: 1rem;
+  align-self: flex-start;
   font-weight: bold;
   font-size: 2rem;
-  color: #787878;
+  color: ${props => props.theme.colors.secondary};
 `
 export const ChartDiv = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
   max-width: 40rem;
   min-width: 10rem;
-  width: 100%;
   max-height: 20rem;
   min-height: 10rem;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `
 
-export const Time = styled.div`
+export const BoxChart = styled.div`
+  min-width: 10rem;
+  width: 28rem;
+  max-width: 30rem;
+  height: auto;
+`
+
+export const BoxButtons = styled.div`
   max-width: 10rem;
   min-width: 5rem;
   width: 100%;
@@ -49,37 +60,5 @@ export const Time = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-`
-export const SelectTimeButton = styled.button`
-  max-width: 5rem;
-  min-width: 2rem;
-  width: 100%;
-  max-height: 2.2rem;
-  min-height: 1.2rem;
-  height: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  border-radius: 0.6rem;
-  border: solid 2px #aea0f8;
-  background-color: #ffffff;
-  align-items: center;
-  color: #787878;
-  font-size: 1.5rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all ease-in-out 0.2s;
-  &:hover {
-    background-color: #aea0f8;
-    color: #ffffff;
-    & div {
-      background-color: #ffffff;
-    }
-  }
-`
-export const Dash = styled.div`
-  width: 0.3rem;
-  height: 1.6rem;
-  border-radius: 1rem;
-  background-color: #aea0f8;
-  transition: all ease-in-out 0.2s;
+  color: grey;
 `
