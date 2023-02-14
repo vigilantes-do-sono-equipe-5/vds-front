@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
   *{
@@ -8,3 +8,13 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
   `
+
+export const Global = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1920px;
+
+  height: 100%;
+`
