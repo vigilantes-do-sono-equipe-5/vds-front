@@ -8,7 +8,6 @@ export const ButtonCalendar = styled.div`
   text-transform: capitalize;
   width: 15rem;
   margin-bottom: 1rem;
-  /* border: 0.2px solid grey; */
 `
 
 export const SelectMonth = styled.button`
@@ -17,7 +16,7 @@ export const SelectMonth = styled.button`
   padding-left: 1rem;
   text-transform: capitalize;
   background-color: rgba(0, 0, 0, 0);
-  color: ${props => props.theme.colors.text};
+  color: black;
   border: none;
   cursor: pointer;
 `
@@ -27,6 +26,6 @@ export const Icon = styled.button`
   border: none;
   font-size: 1rem;
   width: 3rem;
-  color: ${props => props.theme.colors.text};
+  color: black;
   cursor: pointer;
 `

@@ -12,8 +12,8 @@ export const Container = styled.div`
   min-height: 10rem;
   height: 100%;
   max-height: 15rem;
-  background: ${props => props.theme.box.background};
-  color: ${props => props.theme.colors.text};
+  background: white;
+  color: black;
 `
 
 export const BoxCalendar = styled.div`
@@ -27,7 +27,7 @@ export const BoxCalendar = styled.div`
 
   @media screen and (max-width: 1080px) {
     padding-right: 1rem;
-    width: 8rem;
+    width: 15rem;
   }
 `
 
@@ -41,7 +41,6 @@ export const BoxMonth = styled.div`
   width: 6rem;
   min-width: 8rem;
   border-radius: 20px;
-  /* border: 0.2px solid grey; */
   padding: 0.5rem;
   height: 15rem;
 `
@@ -50,7 +49,6 @@ export const BoxYear = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-
   padding: 1rem;
 `
 
@@ -67,7 +65,7 @@ export const SelectionButtons = styled.button`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  max-width: 6rem;
+  max-width: 4rem;
   width: 100%;
   min-width: 2rem;
   max-height: 2.2rem;
@@ -77,7 +75,7 @@ export const SelectionButtons = styled.button`
   border: solid 2px #aea0f8;
   background-color: #ffffff;
   color: #787878;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: bold;
   cursor: pointer;
   transition: all ease-in-out 0.2s;

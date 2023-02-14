@@ -14,7 +14,6 @@ import { Month, MonthBox } from './styled'
 
 export default function MonthView() {
   const today = new Date()
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [month, setMonth] = useState(today)
   const [daysInMonth, setDaysInMonth] = useState<string[]>([])
 
@@ -30,7 +29,6 @@ export default function MonthView() {
     const date = Days.map(el => format(el, 'yyyy-M-d'))
     setDaysInMonth(date)
   }, [month])
-  console.log(daysInMonth)
 
   return (
     <>

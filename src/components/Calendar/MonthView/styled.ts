@@ -18,7 +18,7 @@ export const Month = styled.button`
 
   background-color: rgba(0, 0, 0, 0);
   border: none;
-  color: ${props => props.theme.colors.text};
+  color: black;
 
   text-transform: capitalize;
   border-radius: 20px;

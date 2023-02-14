@@ -2,23 +2,24 @@ import styled from 'styled-components'
 
 export const LegendDiv = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
-  margin-left: 0.2rem;
+  align-items: center;
   max-height: 8rem;
   min-height: 4rem;
   max-width: 8rem;
   min-width: 2rem;
   width: 100%;
   height: 100%;
+  column-gap: 1.5rem;
   color: black;
 `
 export const NameItem = styled.div`
   display: flex;
-  justify-content: start;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
   max-width: 4rem;
-  gap: 0.1rem;
 `
 export const Square = styled.div`
   min-width: 1.6rem;

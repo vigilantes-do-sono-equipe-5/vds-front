@@ -3,21 +3,19 @@ import styled from 'styled-components'
 export const ChartContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  min-width: 20rem;
+  justify-content: center;
+  min-width: 15rem;
   width: 100%;
-  max-height: 23rem;
-  min-height: 10rem;
+  max-width: 60rem;
+  min-height: 15rem;
   height: 100%;
-  border-radius: 1.875rem;
+  max-height: 25rem;
+  border-radius: 30px;
   background-color: white;
-  & h2 {
-    font-size: 1.5rem;
-    color: #787878;
-  }
-  & h3 {
-    font-size: 1.3rem;
+  color: black;
+  @media screen and (max-width: 1400px) {
+    flex-direction: column;
   }
 `
 export const Title = styled.h1`
@@ -25,39 +23,42 @@ export const Title = styled.h1`
   margin-top: 1rem;
   align-self: flex-start;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1rem;
   color: ${props => props.theme.colors.secondary};
 `
 export const ChartDiv = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 2fr 1fr;
   justify-content: center;
   align-items: center;
   padding: 0 1rem;
   max-width: 40rem;
+  width: 100%;
   min-width: 10rem;
-  max-height: 20rem;
   min-height: 10rem;
   height: 100%;
+  max-height: 25rem;
 `
 
 export const BoxChart = styled.div`
   min-width: 10rem;
-  width: 28rem;
-  max-width: 30rem;
-  height: auto;
+  width: 30rem;
+  max-width: 50rem;
+  min-height: 8rem;
+  height: 100%;
+  max-height: 25rem;
 `
 
 export const BoxButtons = styled.div`
-  max-width: 10rem;
-  min-width: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 40rem;
   width: 100%;
+  min-width: 10rem;
   max-height: 10rem;
   min-height: 4rem;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   color: grey;
 `

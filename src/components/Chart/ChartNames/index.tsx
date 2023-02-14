@@ -1,5 +1,5 @@
 import { IChartData } from '../../../interfaces/Chart.interface'
-import { LegendDiv } from './styled'
+import { LegendDiv, Name, NameItem, Square } from './styled'
 
 export const LegendData: IChartData = {
   labels: ['1 star', '2 star', '3 start', '4 star', '5 star'],
@@ -10,18 +10,34 @@ export const LegendData: IChartData = {
     backgroundColor: ['blue', 'red', 'green', 'yellow', 'purple']
   }
 }
+const dados = [
+  {
+    color: 'blue',
+    name: 'Energia'
+  },
+  {
+    color: 'red',
+    name: 'Concentração'
+  },
+  {
+    color: 'green',
+    name: 'Humor'
+  },
+  {
+    color: 'yellow',
+    name: 'Relacionamento'
+  }
+]
 
 export default function ChartNames() {
   return (
     <LegendDiv>
-      {/* {LegendData.map((el, index) => (
+      {dados.map((el, index) => (
         <NameItem key={index}>
           <Square color={el.color} />
-          <Name>
-            {el.name} {el.percent}%
-          </Name>
+          <Name>{el.name}</Name>
         </NameItem>
-      ))} */}
+      ))}
     </LegendDiv>
   )
 }

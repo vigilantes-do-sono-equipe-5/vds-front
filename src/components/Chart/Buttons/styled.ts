@@ -14,7 +14,7 @@ export const ChartButton = styled.button`
   border: solid 2px #aea0f8;
   background-color: #ffffff;
   color: #787878;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
   transition: all ease-in-out 0.2s;

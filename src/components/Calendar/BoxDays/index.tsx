@@ -23,11 +23,8 @@ export default function BoxDays({ firstDayCurrentMonth }: IButtonMonth) {
     end: endOfWeek(firstDayCurrentMonth)
   })
 
-  // const [selected, setSelected] = useState<IDate[]>([])
-
   const [click, setClick] = useState<Date>(new Date())
   const [date, setDate] = useState<Date[]>([])
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [week, setWeek] = useState<string[]>()
 
   useEffect(() => {

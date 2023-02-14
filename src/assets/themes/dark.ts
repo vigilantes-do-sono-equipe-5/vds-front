@@ -18,8 +18,8 @@ export const DarkTheme = {
     text: '#ffffff'
   },
   box: {
-    background: 'black',
+    background: 'white',
     hover: 'red',
-    text: '#fff'
+    text: 'black'
   }
 }

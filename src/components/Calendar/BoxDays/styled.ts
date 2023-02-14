@@ -7,15 +7,16 @@ export const Weeks = styled.button`
   justify-content: center;
   background: none;
   border: none;
-  width: 1.5rem;
-  height: 1.5rem;
-  color: ${props => props.theme.colors.text};
+  width: 1rem;
+  height: 1rem;
+  color: black;
+  font-size: 0.9rem;
   cursor: pointer;
 
   &.selected {
-    background-color: red;
     border-radius: 30px;
   }
+  padding-left: 1rem;
 `
 
 export const DaysWeeks = styled.div`
@@ -26,4 +27,5 @@ export const DaysWeeks = styled.div`
 
   width: 1.5rem;
   height: 1.5rem;
+  padding-left: 1rem;
 `
