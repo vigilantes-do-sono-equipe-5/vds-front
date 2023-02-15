@@ -4,14 +4,14 @@ import { api } from '../helpers/api'
 import {
   IChosenGoals,
   ICompany,
-  IDataContext,
+  ICompanyContext,
   IMainNumbers
-} from '../interfaces/contextData.interfaces'
+} from '../interfaces/contextCompany.interfaces'
 import { IAllProvidersProps } from '../interfaces/contexts.interfaces'
 
-const DataContext = createContext<IDataContext | {}>({})
+const ContextCompany = createContext<ICompanyContext | {}>({})
 
-export function ContextDataProvider({ children }: IAllProvidersProps) {
+export function ContextCompanyProvider({ children }: IAllProvidersProps) {
   const [companies, setCompanies] = useState<ICompany[]>()
   const [mainNumbers, setMainNumbers] = useState<IMainNumbers>()
   const [chosenGoals, setChosenGoals] = useState<IChosenGoals>()
@@ -48,20 +48,22 @@ export function ContextDataProvider({ children }: IAllProvidersProps) {
   }
 
   return (
-    <DataContext.Provider
+    <ContextCompany.Provider
       value={{
-        company: {
+        companyStates: {
           companies,
-          getCompanies,
           mainNumbers,
+          chosenGoals
+        },
+        companyFunctions: {
+          getCompanies,
           getMainNumbers,
-          chosenGoals,
           getChosenGoals
         }
       }}>
       {children}
-    </DataContext.Provider>
+    </ContextCompany.Provider>
   )
 }
 
-export const useContextData = () => useContext(DataContext)
+export const useContextCompany = () => useContext(ContextCompany)

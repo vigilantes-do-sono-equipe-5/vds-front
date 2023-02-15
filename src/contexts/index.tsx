@@ -6,7 +6,7 @@ import { DarkTheme } from '../assets/themes/dark'
 import { lightTheme } from '../assets/themes/light'
 import Menu from '../components/Menu'
 import { IProvidersProps } from '../interfaces/contexts.interfaces'
-import { ContextDataProvider } from './ContextData'
+import { ContextCompanyProvider } from './ContextCompany'
 
 function Providers({ children }: IProvidersProps): JSX.Element {
   const [theme, setTheme] = useState(false)
@@ -17,13 +17,13 @@ function Providers({ children }: IProvidersProps): JSX.Element {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme ? lightTheme : DarkTheme}>
-        <ContextDataProvider>
+        <ContextCompanyProvider>
           <Global>
             <GlobalStyles />
             <Menu changeTheme={switchTheme} />
             {children}
           </Global>
-        </ContextDataProvider>
+        </ContextCompanyProvider>
       </ThemeProvider>
     </BrowserRouter>
   )

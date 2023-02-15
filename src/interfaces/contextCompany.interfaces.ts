@@ -18,13 +18,15 @@ export interface IChosenGoals {
   humor: number
 }
 
-export interface IDataContext {
-  company: {
+export interface ICompanyContext {
+  companyStates: {
     companies: ICompany[]
-    getCompanies: () => Promise<void>
     mainNumbers: IMainNumbers
-    getMainNumbers: () => Promise<void>
     chosenGoals: IChosenGoals
+  }
+  companyFunctions: {
+    getCompanies: () => Promise<void>
+    getMainNumbers: () => Promise<void>
     getChosenGoals: () => Promise<void>
   }
 }
