@@ -6,6 +6,7 @@ export const DarkTheme = {
     text: '#fff',
     title: '#525252',
     line: '#BDBDBD',
+    box: '#BDBDBD',
 
     primary: '#1D1841',
     secondary: '#354991',
