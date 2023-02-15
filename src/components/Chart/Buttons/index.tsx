@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react'
 import { ChartButton } from './styled'
 
-export default function Buttons({ name }: { name: string }) {
+export default function Buttons({
+  name,
+  change
+}: {
+  name: string
+  change: () => void
+}) {
   const [buttonName, setButtonName] = useState<string>('')
 
   useEffect(() => {
@@ -10,7 +16,7 @@ export default function Buttons({ name }: { name: string }) {
 
   return (
     <>
-      <ChartButton type='button'>
+      <ChartButton type='button' onClick={change}>
         <span />
         {buttonName}
       </ChartButton>

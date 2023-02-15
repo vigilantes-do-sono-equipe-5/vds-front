@@ -41,6 +41,7 @@ export default function BarChart({ labels, datasets }: IChartData) {
     <Bar
       data={formatData}
       options={{
+        maintainAspectRatio: false,
         aspectRatio: 2,
         responsive: true,
         layout: { autoPadding: true },
