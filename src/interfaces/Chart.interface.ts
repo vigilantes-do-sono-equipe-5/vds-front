@@ -3,6 +3,11 @@ export interface IData {
   percent: number
   color: string
 }
+export interface ILineData {
+  id: string
+  name: string
+  color: string
+}
 
 export interface IChartData {
   labels: string[]
