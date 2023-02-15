@@ -1,9 +1,9 @@
 import { ReactNode } from 'react'
 
-export interface IContextData {
-  data: object
+export interface IProvidersProps {
+  children: ReactNode
 }
 
-export interface IProvidersProps {
+export interface IAllProvidersProps {
   children: ReactNode
 }

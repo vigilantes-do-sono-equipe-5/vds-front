@@ -1,18 +1,28 @@
-import { createContext, ReactNode, useContext } from 'react'
+import { AxiosError, AxiosResponse } from 'axios'
+import { createContext, useContext, useEffect, useState } from 'react'
+import { api } from '../helpers/api'
+import { ICompany, IDataContext } from '../interfaces/contextData.interfaces'
+import { IAllProvidersProps } from '../interfaces/contexts.interfaces'
 
-interface IAllProvidersProps {
-  children: ReactNode
-}
-
-const ConfigUserContext = createContext({})
+const DataContext = createContext<IDataContext | {}>({})
 
 export function ContextDataProvider({ children }: IAllProvidersProps) {
-  const data = 'test'
+  const [companies, setCompanies] = useState<ICompany[]>()
+
+  const getCompanies = async (): Promise<void> => {
+    try {
+      const response: AxiosResponse<ICompany[]> = await api.get('/company')
+      setCompanies(response.data)
+    } catch (error) {
+      console.log('getConmpanies', error)
+    }
+  }
+
   return (
-    <ConfigUserContext.Provider value={data}>
+    <DataContext.Provider value={{ company: { companies, getCompanies } }}>
       {children}
-    </ConfigUserContext.Provider>
+    </DataContext.Provider>
   )
 }
 
-export const useContextData = () => useContext(ConfigUserContext)
+export const useContextData = () => useContext(DataContext)
