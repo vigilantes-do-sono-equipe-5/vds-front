@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
+import PagenNotFound from '../components/PageNotFound'
 import Providers from '../contexts'
 import Chart from '../pages/Chart'
 import Help from '../pages/Help'
@@ -13,6 +14,7 @@ export default function Router() {
         <Route element={<Chart />} path='chart' />
         <Route element={<Message />} path='message' />
         <Route element={<Help />} path='help' />
+        <Route element={<PagenNotFound />} path='*' />
       </Routes>
     </Providers>
   )
