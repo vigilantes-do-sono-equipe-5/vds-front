@@ -2,6 +2,7 @@ import { AxiosResponse } from 'axios'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { api } from '../helpers/api'
 import {
+  IChosenGoals,
   ICompany,
   IDataContext,
   IMainNumbers
@@ -13,6 +14,7 @@ const DataContext = createContext<IDataContext | {}>({})
 export function ContextDataProvider({ children }: IAllProvidersProps) {
   const [companies, setCompanies] = useState<ICompany[]>()
   const [mainNumbers, setMainNumbers] = useState<IMainNumbers>()
+  const [chosenGoals, setChosenGoals] = useState<IChosenGoals>()
 
   const getCompanies = async (): Promise<void> => {
     try {
@@ -34,10 +36,28 @@ export function ContextDataProvider({ children }: IAllProvidersProps) {
     }
   }
 
+  const getChosenGoals = async (id: string): Promise<void> => {
+    try {
+      const response: AxiosResponse<IChosenGoals> = await api.get(
+        `/company/chosenGoals/${id}`
+      )
+      setChosenGoals(response.data)
+    } catch (error) {
+      console.log('mainNumbers', error)
+    }
+  }
+
   return (
     <DataContext.Provider
       value={{
-        company: { companies, getCompanies, mainNumbers, getMainNumbers }
+        company: {
+          companies,
+          getCompanies,
+          mainNumbers,
+          getMainNumbers,
+          chosenGoals,
+          getChosenGoals
+        }
       }}>
       {children}
     </DataContext.Provider>
