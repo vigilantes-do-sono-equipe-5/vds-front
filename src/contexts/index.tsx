@@ -10,7 +10,7 @@ import { ContextDataProvider } from './ContextData'
 
 function Providers({ children }: IProvidersProps): JSX.Element {
   const [theme, setTheme] = useState(false)
-  function changeTheme() {
+  function switchTheme() {
     setTheme(!theme)
   }
 
@@ -20,7 +20,7 @@ function Providers({ children }: IProvidersProps): JSX.Element {
         <ContextDataProvider>
           <Global>
             <GlobalStyles />
-            <Menu changeTheme={changeTheme} />
+            <Menu changeTheme={switchTheme} />
             {children}
           </Global>
         </ContextDataProvider>
