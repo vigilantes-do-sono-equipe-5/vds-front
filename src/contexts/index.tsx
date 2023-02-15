@@ -7,6 +7,10 @@ import { lightTheme } from '../assets/themes/light'
 import Menu from '../components/Menu'
 import { IProvidersProps } from '../interfaces/contexts.interfaces'
 import { ContextCompanyProvider } from './ContextCompany'
+import { ContextGadProvider } from './ContextGad'
+import { ContextIsiProvider } from './ContextIsi'
+import { ContextPhqProvider } from './ContextPhq'
+import { ContextRatingsProvider } from './ContextRatings'
 import { ContextSleepDiariesProvider } from './ContextSleepDiaries'
 
 function Providers({ children }: IProvidersProps): JSX.Element {
@@ -20,11 +24,19 @@ function Providers({ children }: IProvidersProps): JSX.Element {
       <ThemeProvider theme={theme ? lightTheme : DarkTheme}>
         <ContextCompanyProvider>
           <ContextSleepDiariesProvider>
-            <Global>
-              <GlobalStyles />
-              <Menu changeTheme={switchTheme} />
-              {children}
-            </Global>
+            <ContextGadProvider>
+              <ContextIsiProvider>
+                <ContextPhqProvider>
+                  <ContextRatingsProvider>
+                    <Global>
+                      <GlobalStyles />
+                      <Menu changeTheme={switchTheme} />
+                      {children}
+                    </Global>
+                  </ContextRatingsProvider>
+                </ContextPhqProvider>
+              </ContextIsiProvider>
+            </ContextGadProvider>
           </ContextSleepDiariesProvider>
         </ContextCompanyProvider>
       </ThemeProvider>
