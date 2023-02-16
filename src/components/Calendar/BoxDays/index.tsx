@@ -10,6 +10,7 @@ import { DaysWeeks, Weeks } from './styled'
 
 interface IButtonMonth {
   firstDayCurrentMonth: Date
+  handleSetDate: (object: { period?: string[]; type: 'week' | 'month' }) => void
 }
 
 // interface IDate {
@@ -17,7 +18,10 @@ interface IButtonMonth {
 //   selected?: boolean[]
 // }
 
-export default function BoxDays({ firstDayCurrentMonth }: IButtonMonth) {
+export default function BoxDays({
+  firstDayCurrentMonth,
+  handleSetDate
+}: IButtonMonth) {
   const dayWeek = eachDayOfInterval({
     start: startOfWeek(firstDayCurrentMonth),
     end: endOfWeek(firstDayCurrentMonth)
@@ -32,9 +36,11 @@ export default function BoxDays({ firstDayCurrentMonth }: IButtonMonth) {
       start: startOfWeek(click),
       end: endOfWeek(click)
     })
-    const dados = data.map(el => format(el, 'd-M-y'))
+    const dados = data.map(el => format(el, 'y-M-d'))
 
-    setWeek(dados)
+    setWeek([dados[0], dados[6]])
+    handleSetDate({ period: week, type: 'week' })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [click])
 
   useEffect(() => {
@@ -44,7 +50,6 @@ export default function BoxDays({ firstDayCurrentMonth }: IButtonMonth) {
     })
     setDate(date)
   }, [firstDayCurrentMonth])
-
   return (
     <>
       {dayWeek.map(dayName => (

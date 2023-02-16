@@ -2,7 +2,7 @@ import { IChartData } from '../../../interfaces/Chart.interface'
 import { LegendDiv, Name, NameItem, Square } from './styled'
 
 export const LegendData: IChartData = {
-  labels: ['1 star', '2 star', '3 start', '4 star', '5 star'],
+  labels: ['1 ⭐', '2 ⭐', '3 ⭐', '4 ⭐', '5 ⭐'],
   datasets: {
     barThickness: 30,
     label: 'Rating',

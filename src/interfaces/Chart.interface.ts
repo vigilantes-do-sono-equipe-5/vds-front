@@ -13,3 +13,8 @@ export interface IChartData {
     backgroundColor: string[]
   }
 }
+
+export interface IReportChart {
+  name: string
+  data: IChartData
+}

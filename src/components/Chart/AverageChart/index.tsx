@@ -6,29 +6,40 @@ import {
   LinearScale,
   Tooltip
 } from 'chart.js'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import BarChart from '../BarChart'
 import Buttons from '../Buttons'
 import { BoxButtons, BoxChart, ChartContainer, ChartDiv, Title } from './styled'
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
-const data = {
-  labels: ['Energia', 'Concentração', 'Humor', 'Relacionamento'],
-  datasets: {
-    barThickness: 30,
-    label: 'Rating',
-    data: [40, 80, 30, 50],
-    backgroundColor: ['blue', 'red', 'green', 'yellow']
+
+export default function AverageChart({
+  name,
+  data
+}: {
+  name: string[]
+  data: {
+    barThickness?: number | undefined
+    label: string
+    data: number[]
+    backgroundColor: string[]
   }
-}
-export default function AverageChart() {
+}) {
+  const [nameChart, setNameChart] = useState(name)
+  const [dataChart, setDataChart] = useState(data)
+  data.barThickness = 30
+
+  useEffect(() => {
+    setNameChart(name)
+    setDataChart(data)
+  }, [name, data])
   useEffect(() => {}, [])
   return (
     <ChartContainer>
-      <Title>ESTATÍSTICAS DA SEMANA</Title>
+      <Title>Objetivos escolhidos</Title>
       <ChartDiv>
         <BoxChart>
-          <BarChart labels={data.labels} datasets={data.datasets} />
+          <BarChart labels={nameChart} datasets={dataChart} />
         </BoxChart>
         <h3>Gráficos</h3>
         <BoxButtons>

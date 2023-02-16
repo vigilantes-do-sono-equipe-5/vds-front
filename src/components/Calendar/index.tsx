@@ -19,7 +19,11 @@ interface ISelect {
   Month: boolean
 }
 
-export default function Calendar() {
+interface IProps {
+  handleSetDate: (object: { period?: string[]; type: 'week' | 'month' }) => void
+}
+
+export default function Calendar({ handleSetDate }: IProps) {
   const today = new Date()
   const [currentDate, setCurrentDate] = useState<Date>(new Date())
   const [month, setMonth] = useState(format(today, 'MMMM - yyyy'))
@@ -67,10 +71,13 @@ export default function Calendar() {
         />
         {select ? (
           <BoxMonth>
-            <BoxDays firstDayCurrentMonth={currentDate} />
+            <BoxDays
+              firstDayCurrentMonth={currentDate}
+              handleSetDate={handleSetDate}
+            />
           </BoxMonth>
         ) : (
-          <MonthView />
+          <MonthView handleSetDate={handleSetDate} />
         )}
       </BoxCalendar>
       <BoxButton>

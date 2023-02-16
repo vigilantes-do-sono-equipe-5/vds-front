@@ -6,19 +6,27 @@ import {
   LinearScale,
   Tooltip
 } from 'chart.js'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { IChartData, IReportChart } from '../../../interfaces/Chart.interface'
 import PieChart from '../PieChart'
 import { BoxChart, Container, Title } from './styled'
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
 
-export default function UserChart() {
-  useEffect(() => {}, [])
+export default function UserChart({ name, data }: IReportChart) {
+  const [nameChart, setNameChart] = useState(name)
+  const [dataChart, setDataLanbels] = useState(data)
+
+  useEffect(() => {
+    setNameChart(name)
+    setDataLanbels(data)
+  }, [name, data])
+
   return (
     <Container>
-      <Title>Usuários na semana</Title>
+      <Title>{nameChart}</Title>
       <BoxChart>
-        <PieChart />
+        <PieChart labels={dataChart.labels} datasets={dataChart.datasets} />
       </BoxChart>
     </Container>
   )
