@@ -12,7 +12,11 @@ import startOfMonth from 'date-fns/startOfMonth'
 import { useEffect, useState } from 'react'
 import { Month, MonthBox } from './styled'
 
-export default function MonthView() {
+interface IProps {
+  handleSetDate: (object: { period?: string[]; type: 'week' | 'month' }) => void
+}
+
+export default function MonthView({ handleSetDate }: IProps) {
   const today = new Date()
   const [month, setMonth] = useState(today)
   const [daysInMonth, setDaysInMonth] = useState<string[]>([])
@@ -27,7 +31,9 @@ export default function MonthView() {
       end: endOfDay(endOfMonth(month))
     })
     const date = Days.map(el => format(el, 'yyyy-M-d'))
-    setDaysInMonth(date)
+    setDaysInMonth([date[0], date[date.length - 1]])
+    handleSetDate({ period: daysInMonth, type: 'month' })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [month])
 
   return (

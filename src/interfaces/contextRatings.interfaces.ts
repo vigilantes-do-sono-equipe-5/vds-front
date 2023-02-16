@@ -7,6 +7,12 @@ export interface IRatings {
 }
 
 export interface IContextRatings {
-  gadStates: { averageRatings: IRatings }
-  gadFunctions: { getAverageRatings: () => Promise<void> }
+  ratingsStates: { ratings: IRatings | undefined }
+  ratingsFunctions: {
+    getRatings: (
+      id: string,
+      startDate: string,
+      finalDate: string
+    ) => Promise<void>
+  }
 }

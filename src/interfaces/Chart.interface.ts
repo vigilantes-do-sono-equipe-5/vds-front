@@ -5,7 +5,7 @@ export interface IData {
 }
 
 export interface IChartData {
-  labels?: string[]
+  labels: string[]
   datasets: {
     barThickness?: number
     label: string

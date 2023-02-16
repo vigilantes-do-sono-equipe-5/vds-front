@@ -7,7 +7,8 @@ import {
 } from '../interfaces/contextRatings.interfaces'
 import { IAllProvidersProps } from '../interfaces/contexts.interfaces'
 
-const ContextRatings = createContext<IContextRatings | {}>({})
+const defaultValue = {}
+const ContextRatings = createContext(defaultValue as IContextRatings)
 
 export function ContextRatingsProvider({ children }: IAllProvidersProps) {
   const [ratings, setRatings] = useState<IRatings>()
@@ -18,13 +19,11 @@ export function ContextRatingsProvider({ children }: IAllProvidersProps) {
     finalDate: string
   ): Promise<void> => {
     try {
-      const response: AxiosResponse<IRatings> = await api.get(
-        `/ratings/${id}`,
-        {
-          params: { startDate, finalDate }
-        }
-      )
+      const response: AxiosResponse<IRatings> = await api.get(`/rating/${id}`, {
+        params: { startDate, finalDate }
+      })
       setRatings(response.data)
+      console.log('rating', ratings)
     } catch (error) {
       console.log('getAverageRatings', error)
     }
