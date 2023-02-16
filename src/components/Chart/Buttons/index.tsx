@@ -6,7 +6,7 @@ export default function Buttons({ name }: { name: string }) {
 
   useEffect(() => {
     setButtonName(name)
-  }, [])
+  }, [name])
 
   return (
     <>

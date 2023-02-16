@@ -11,31 +11,45 @@ import { useEffect, useState } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { IChartData } from '../../../interfaces/Chart.interface'
 
+interface IBarChart {
+  labels: string[]
+  datasets: [
+    {
+      barThickness: number
+      label?: string
+      data: number[]
+      backgroundColor: string[]
+    }
+  ]
+}
+
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
 export default function BarChart({ labels, datasets }: IChartData) {
-  const [chart, setChart] = useState<string[]>()
-  const [number, setNumber] = useState<number[]>()
-  const [color, setColor] = useState<string[]>()
-
-  useEffect(() => {
-    setChart(labels)
-    setNumber(datasets.data)
-    setColor(datasets.backgroundColor)
-  }, [chart, number, color, labels, datasets.data, datasets.backgroundColor])
-
-  console.log(chart)
-
-  const formatData = {
-    labels: chart,
+  const [formatData, setFormatData] = useState<IBarChart>({
+    labels,
     datasets: [
       {
         barThickness: 30,
         label: datasets.label,
-        data: number,
-        backgroundColor: color
+        data: datasets.data,
+        backgroundColor: datasets.backgroundColor
       }
     ]
-  }
+  })
+
+  useEffect(() => {
+    setFormatData({
+      labels,
+      datasets: [
+        {
+          barThickness: 30,
+          label: datasets.label,
+          data: datasets.data,
+          backgroundColor: datasets.backgroundColor
+        }
+      ]
+    })
+  }, [labels, datasets])
 
   return (
     <Bar

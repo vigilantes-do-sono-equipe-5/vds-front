@@ -5,11 +5,16 @@ export interface IData {
 }
 
 export interface IChartData {
-  labels: string[]
+  labels?: string[]
   datasets: {
     barThickness?: number
     label: string
     data: number[]
     backgroundColor: string[]
   }
+}
+
+export interface IReportChart {
+  name: string
+  data: IChartData
 }

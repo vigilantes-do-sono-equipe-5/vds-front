@@ -13,8 +13,6 @@ import { BoxChart, ChartContainer, Title } from './styled'
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
 
-console.log(LegendData)
-
 export default function RatingChart() {
   useEffect(() => {}, [])
   return (
