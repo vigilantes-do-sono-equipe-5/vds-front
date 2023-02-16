@@ -49,6 +49,15 @@ const dataRatingsInitial: IChartData = {
   }
 }
 
+const dataChosenGoalsInitial: IChartData = {
+  labels: ['Concentração', 'Energia', 'Humor', 'Realacionamentos'],
+  datasets: {
+    label: '',
+    data: [0, 0, 0, 0],
+    backgroundColor: ['blue', 'red', 'green', 'yellow']
+  }
+}
+
 export default function Home() {
   const [date, setDate] = useState<{
     period?: string[]
@@ -65,8 +74,9 @@ export default function Home() {
   const [dataTechniques, setDataTechniques] = useState<IChartData>(dataInitial)
   const [dataUser, setDataUser] = useState<IChartData>(dataUserInitial)
   const [dataRatings, setDataRatings] = useState<IChartData>(dataRatingsInitial)
-  const [dataChosenGoals, setDataChosenGoals] =
-    useState<IChartData>(dataRatingsInitial)
+  const [dataChosenGoals, setDataChosenGoals] = useState<IChartData>(
+    dataChosenGoalsInitial
+  )
 
   const handleSetDate = (object: {
     period?: string[]
@@ -151,6 +161,8 @@ export default function Home() {
           ['blue', 'red', 'green', 'yellow']
         )
       )
+    } else {
+      setDataChosenGoals(dataChosenGoalsInitial)
     }
   }
 
