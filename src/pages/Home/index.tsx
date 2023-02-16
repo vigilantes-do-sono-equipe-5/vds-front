@@ -221,9 +221,7 @@ export default function Home() {
           <RatingChart
             name={dataRatings.labels}
             data={dataRatings.datasets}
-            title={
-              !date?.type ?? date?.type === 'week' ? 'da Semana' : 'do Mês'
-            }
+            title={date?.type === 'week' ? 'da Semana' : 'do Mês'}
           />
         </BoxChart>
         <ChartUsers>
