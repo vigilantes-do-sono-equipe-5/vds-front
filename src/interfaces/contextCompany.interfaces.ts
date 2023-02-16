@@ -26,7 +26,7 @@ export interface ICompanyContext {
   }
   companyFunctions: {
     getCompanies: () => Promise<void>
-    getMainNumbers: () => Promise<void>
-    getChosenGoals: () => Promise<void>
+    getMainNumbers: (id: string) => Promise<void>
+    getChosenGoals: (id: string) => Promise<void>
   }
 }

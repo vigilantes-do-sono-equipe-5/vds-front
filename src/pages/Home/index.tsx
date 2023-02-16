@@ -1,9 +1,11 @@
+import { SetStateAction, useEffect, useState } from 'react'
 import Calendar from '../../components/Calendar'
 import AverageChart from '../../components/Chart/AverageChart'
 import IsiGadPhq from '../../components/Chart/IsiGadPhq'
 import RatingChart from '../../components/Chart/RatingChart'
 import ReportChart from '../../components/Chart/ReportChart'
 import UserChart from '../../components/Chart/UserChart'
+import { useContextCompany } from '../../contexts/ContextCompany'
 import { IChartData } from '../../interfaces/Chart.interface'
 import {
   BottomBox,
@@ -18,20 +20,73 @@ import {
   TopBox
 } from './styled'
 
-const data: IChartData = {
+const dataInitial: IChartData = {
   labels: ['total'],
   datasets: {
     label: 'total',
-    data: [500],
+    data: [0],
     backgroundColor: ['blue']
   }
 }
+
 export default function Home() {
+  const { companyStates, companyFunctions } = useContextCompany()
+  const [chosenCompany, setChosenCompany] = useState<string>()
+  const [dataUserProgramSession, setDataUserProgramSession] =
+    useState<IChartData>(dataInitial)
+  const [dataSleepDiaries, setDataSleepDiaries] =
+    useState<IChartData>(dataInitial)
+  const [dataTechniques, setDataTechniques] = useState<IChartData>(dataInitial)
+
+  const handleCompany = (event: {
+    target: { value: SetStateAction<string | undefined> }
+  }) => {
+    setChosenCompany(event.target.value)
+  }
+
+  const mountData = (value: number): IChartData => {
+    return {
+      labels: ['total'],
+      datasets: {
+        label: 'total',
+        data: [value],
+        backgroundColor: ['blue']
+      }
+    }
+  }
+
+  useEffect(() => {
+    companyFunctions
+      .getCompanies()
+      .catch(error => console.log('getCompanies', error))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    if (chosenCompany) {
+      companyFunctions
+        .getMainNumbers(chosenCompany)
+        .catch(error => console.log('getCompanies', error))
+      setDataUserProgramSession(
+        mountData(companyStates.mainNumbers.userProgramSession)
+      )
+      setDataSleepDiaries(mountData(companyStates.mainNumbers.sleepDiaries))
+      setDataTechniques(mountData(companyStates.mainNumbers.techniques))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chosenCompany])
+
   return (
     <Container>
-      <Client name='empresas'>
-        <option value='Empresa 1'>Empresa 1</option>
-        <option value='Empresa 2'>Empresa 2</option>
+      <Client name='empresas' onChange={e => handleCompany(e)}>
+        <option value={undefined}>Escolha uma empresa...</option>
+        {companyStates.companies.map(e => {
+          return (
+            <option key={e.id} value={e.id}>
+              {e.name}
+            </option>
+          )
+        })}
       </Client>
       <TopBox>
         <BoxChart>
@@ -46,13 +101,19 @@ export default function Home() {
       </TopBox>
       <MiddleBox>
         <BoxInfo>
-          <ReportChart name='Total de sessões feitas' data={data} />
+          <ReportChart
+            name='Total de sessões feitas'
+            data={dataUserProgramSession}
+          />
         </BoxInfo>
         <BoxInfo>
-          <ReportChart name='Noites de sono reportadas' data={data} />
+          <ReportChart
+            name='Noites de sono reportadas'
+            data={dataSleepDiaries}
+          />
         </BoxInfo>
         <BoxInfo>
-          <ReportChart name='Técnicas aplicadas' data={data} />
+          <ReportChart name='Técnicas aplicadas' data={dataTechniques} />
         </BoxInfo>
       </MiddleBox>
       <BottomBox>

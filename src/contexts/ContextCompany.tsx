@@ -9,12 +9,13 @@ import {
 } from '../interfaces/contextCompany.interfaces'
 import { IAllProvidersProps } from '../interfaces/contexts.interfaces'
 
-const ContextCompany = createContext<ICompanyContext | {}>({})
+const defaultValue = {}
+const ContextCompany = createContext(defaultValue as ICompanyContext)
 
 export function ContextCompanyProvider({ children }: IAllProvidersProps) {
-  const [companies, setCompanies] = useState<ICompany[]>()
-  const [mainNumbers, setMainNumbers] = useState<IMainNumbers>()
-  const [chosenGoals, setChosenGoals] = useState<IChosenGoals>()
+  const [companies, setCompanies] = useState([] as ICompany[])
+  const [mainNumbers, setMainNumbers] = useState(defaultValue as IMainNumbers)
+  const [chosenGoals, setChosenGoals] = useState(defaultValue as IChosenGoals)
 
   const getCompanies = async (): Promise<void> => {
     try {

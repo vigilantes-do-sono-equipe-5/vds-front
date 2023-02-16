@@ -21,7 +21,7 @@ export default function BarChart({ labels, datasets }: IChartData) {
     setChart(labels)
     setNumber(datasets.data)
     setColor(datasets.backgroundColor)
-  }, [chart, number, color])
+  }, [chart, number, color, labels, datasets.data, datasets.backgroundColor])
 
   console.log(chart)
 
