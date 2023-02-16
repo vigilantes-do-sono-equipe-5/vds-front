@@ -4,6 +4,12 @@ export interface IAverageIsi {
   endAverageIsi: number
 }
 export interface IContextIsi {
-  gadStates: { averageIsi: IAverageIsi }
-  gadFunctions: { getAverageIsi: () => Promise<void> }
+  isiStates: { averageIsi: IAverageIsi | undefined }
+  isiFunctions: {
+    getAverageIsi: (
+      id: string,
+      startDate: string,
+      finalDate: string
+    ) => Promise<void>
+  }
 }

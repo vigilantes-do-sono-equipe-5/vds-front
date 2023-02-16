@@ -4,6 +4,12 @@ export interface IAveragePhq {
   endAveragePhq: number
 }
 export interface IContextPhq {
-  gadStates: { averagePhq: IAveragePhq }
-  gadFunctions: { getAveragePhq: () => Promise<void> }
+  phqStates: { averagePhq: IAveragePhq | undefined }
+  phqFunctions: {
+    getAveragePhq: (
+      id: string,
+      startDate: string,
+      finalDate: string
+    ) => Promise<void>
+  }
 }

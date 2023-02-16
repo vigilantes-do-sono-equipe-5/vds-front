@@ -6,6 +6,9 @@ import RatingChart from '../../components/Chart/RatingChart'
 import ReportChart from '../../components/Chart/ReportChart'
 import UserChart from '../../components/Chart/UserChart'
 import { useContextCompany } from '../../contexts/ContextCompany'
+import { useContextGad } from '../../contexts/ContextGad'
+import { useContextIsi } from '../../contexts/ContextIsi'
+import { useContextPhq } from '../../contexts/ContextPhq'
 import { useContextRatings } from '../../contexts/ContextRatings'
 import { IChartData } from '../../interfaces/Chart.interface'
 import { ICompany } from '../../interfaces/contextCompany.interfaces'
@@ -58,11 +61,54 @@ const dataChosenGoalsInitial: IChartData = {
   }
 }
 
+const dataIsiGadPhqInitial: {
+  labels: string[]
+  datasets: Array<{
+    label: string
+    barThickness?: number
+    data: number[]
+    backgroundColor: string | string[]
+    borderColor?: string
+    borderWidth?: number
+  }>
+} = {
+  labels: ['Inicio', 'Meio', 'Final'],
+  datasets: [
+    {
+      label: 'ISI',
+      barThickness: 50,
+      data: [0, 0, 0],
+      backgroundColor: 'red',
+      borderColor: 'black',
+      borderWidth: 1
+    },
+    {
+      label: 'GAD',
+      barThickness: 50,
+      data: [0, 0, 0],
+      backgroundColor: 'orange',
+      borderColor: 'black',
+      borderWidth: 1
+    },
+    {
+      label: 'PHQ',
+      barThickness: 50,
+      data: [0, 0, 0],
+      backgroundColor: 'green',
+      borderColor: 'black',
+      borderWidth: 1
+    }
+  ]
+}
+
 export default function Home() {
   const [date, setDate] = useState<{
     period?: string[]
     type: 'week' | 'month'
   }>()
+  const { isiStates, isiFunctions } = useContextIsi()
+  const { gadStates, gadFunctions } = useContextGad()
+  const { phqStates, phqFunctions } = useContextPhq()
   const { companyStates, companyFunctions } = useContextCompany()
   const { ratingsStates, ratingsFunctions } = useContextRatings()
   const [chosenCompany, setChosenCompany] = useState<string>('')
@@ -77,6 +123,7 @@ export default function Home() {
   const [dataChosenGoals, setDataChosenGoals] = useState<IChartData>(
     dataChosenGoalsInitial
   )
+  const [dataIsiGadPhq, setDataIsiGadPhq] = useState(dataIsiGadPhqInitial)
 
   const handleSetDate = (object: {
     period?: string[]
@@ -111,14 +158,20 @@ export default function Home() {
   const mountData = (
     dataValue: number | number[],
     labelsValue: string | string[],
-    colorValue: string[]
-  ): IChartData => {
+    colorValue: string[],
+    borderColor?: string,
+    borderWidth?: number,
+    barThickness?: number
+  ) => {
     return {
       labels: typeof labelsValue === 'string' ? [labelsValue] : labelsValue,
       datasets: {
+        barThickness,
         label: '',
         data: typeof dataValue === 'number' ? [dataValue] : dataValue,
-        backgroundColor: colorValue
+        backgroundColor: colorValue,
+        borderColor,
+        borderWidth
       }
     }
   }
@@ -217,6 +270,85 @@ export default function Home() {
     }
   }
 
+  const handleIsiGadPhq = async () => {
+    if (
+      typeof company !== 'undefined' &&
+      chosenCompany !== '' &&
+      typeof date?.period !== 'undefined'
+    ) {
+      await isiFunctions.getAverageIsi(
+        company[0].id,
+        date.period[0],
+        date.period[1]
+      )
+      await gadFunctions.getAverageGad(
+        company[0].id,
+        date.period[0],
+        date.period[1]
+      )
+      await phqFunctions.getAveragePhq(
+        company[0].id,
+        date.period[0],
+        date.period[1]
+      )
+      if (
+        typeof isiStates.averageIsi !== 'undefined' &&
+        typeof gadStates.averageGad !== 'undefined' &&
+        typeof phqStates.averagePhq !== 'undefined'
+      ) {
+        const dataIsi = mountData(
+          [
+            isiStates.averageIsi?.beginningAverageIsi,
+            isiStates.averageIsi?.middleAverageIsi,
+            isiStates.averageIsi?.endAverageIsi
+          ],
+          ['Inicio', 'Meio', 'Final'],
+          ['red'],
+          'black',
+          1,
+          50
+        )
+
+        const dataGad = mountData(
+          [
+            gadStates.averageGad?.beginningAverageGad,
+            gadStates.averageGad?.middleAverageGad,
+            gadStates.averageGad?.endAverageGad
+          ],
+          ['Inicio', 'Meio', 'Final'],
+          ['orange'],
+          'black',
+          1,
+          50
+        )
+
+        const dataPhq = mountData(
+          [
+            phqStates.averagePhq?.beginningAveragePhq,
+            phqStates.averagePhq?.middleAveragePhq,
+            phqStates.averagePhq?.endAveragePhq
+          ],
+          ['Inicio', 'Meio', 'Final'],
+          ['green'],
+          'black',
+          1,
+          50
+        )
+
+        setDataIsiGadPhq({
+          labels: ['', '', '', '', ''],
+          datasets: [
+            { ...dataIsi.datasets },
+            { ...dataGad.datasets },
+            { ...dataPhq.datasets }
+          ]
+        })
+      } else {
+        setDataIsiGadPhq(dataIsiGadPhqInitial)
+      }
+    }
+  }
+
   useEffect(() => {
     companyFunctions
       .getCompanies()
@@ -225,10 +357,11 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
+    handleCompany()
     handleMainNumbers().catch(error => console.log('handleMainNumbers', error))
     handleRatings().catch(error => console.log('handleRatings', error))
     handleChosenGoals().catch(error => console.log('handleChosenGoals', error))
-    handleCompany()
+    handleIsiGadPhq().catch(error => console.log('handleIsiGadPhq', error))
     handleActiveUsers()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chosenCompany, date])
@@ -285,7 +418,10 @@ export default function Home() {
           />
         </MediaGeral>
         <ChartDepre>
-          <IsiGadPhq />
+          <IsiGadPhq
+            labels={dataIsiGadPhq.labels}
+            datasets={dataIsiGadPhq.datasets}
+          />
         </ChartDepre>
       </BottomBox>
     </Container>

@@ -4,7 +4,8 @@ import { api } from '../helpers/api'
 import { IAverageGad, IContextGad } from '../interfaces/contextGad.interfaces'
 import { IAllProvidersProps } from '../interfaces/contexts.interfaces'
 
-const ContextGad = createContext<IContextGad | {}>({})
+const defaultValue = {}
+const ContextGad = createContext(defaultValue as IContextGad)
 
 export function ContextGadProvider({ children }: IAllProvidersProps) {
   const [averageGad, setAverageGad] = useState<IAverageGad>()

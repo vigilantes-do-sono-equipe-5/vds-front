@@ -4,7 +4,8 @@ import { api } from '../helpers/api'
 import { IAverageIsi, IContextIsi } from '../interfaces/contextIsi.interfaces'
 import { IAllProvidersProps } from '../interfaces/contexts.interfaces'
 
-const ContextIsi = createContext<IContextIsi | {}>({})
+const defaultValue = {}
+const ContextIsi = createContext(defaultValue as IContextIsi)
 
 export function ContextIsiProvider({ children }: IAllProvidersProps) {
   const [averageIsi, setAverageIsi] = useState<IAverageIsi>()

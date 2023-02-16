@@ -5,6 +5,12 @@ export interface IAverageGad {
 }
 
 export interface IContextGad {
-  gadStates: { averageGad: IAverageGad }
-  gadFunctions: { getIAverageGad: () => Promise<void> }
+  gadStates: { averageGad: IAverageGad | undefined }
+  gadFunctions: {
+    getAverageGad: (
+      id: string,
+      startDate: string,
+      finalDate: string
+    ) => Promise<void>
+  }
 }
