@@ -36,7 +36,7 @@ export default function BoxDays({
       start: startOfWeek(click),
       end: endOfWeek(click)
     })
-    const dados = data.map(el => format(el, 'd-M-y'))
+    const dados = data.map(el => format(el, 'y-M-d'))
 
     setWeek([dados[0], dados[6]])
     handleSetDate({ period: week, type: 'week' })
