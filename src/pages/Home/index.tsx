@@ -65,6 +65,8 @@ export default function Home() {
   const [dataTechniques, setDataTechniques] = useState<IChartData>(dataInitial)
   const [dataUser, setDataUser] = useState<IChartData>(dataUserInitial)
   const [dataRatings, setDataRatings] = useState<IChartData>(dataRatingsInitial)
+  const [dataChosenGoals, setDataChosenGoals] =
+    useState<IChartData>(dataRatingsInitial)
 
   const handleSetDate = (object: {
     period?: string[]
@@ -134,6 +136,24 @@ export default function Home() {
     }
   }
 
+  const handleChosenGoals = async () => {
+    if (chosenCompany !== '' && typeof company !== 'undefined') {
+      await companyFunctions.getChosenGoals(company[0].id)
+      setDataChosenGoals(
+        mountData(
+          [
+            companyStates.chosenGoals.concentration,
+            companyStates.chosenGoals.energy,
+            companyStates.chosenGoals.humor,
+            companyStates.chosenGoals.relationships
+          ],
+          ['Concentração', 'Energia', 'Humor', 'Realacionamentos '],
+          ['blue', 'red', 'green', 'yellow']
+        )
+      )
+    }
+  }
+
   const handleActiveUsers = (): void => {
     if (typeof company !== 'undefined' && chosenCompany !== '') {
       const active = (company[0].activeEmployees * 100) / company[0].employees
@@ -183,7 +203,6 @@ export default function Home() {
         )
       )
     }
-    console.log(date?.period, ratingsStates?.ratings)
   }
 
   useEffect(() => {
@@ -196,6 +215,7 @@ export default function Home() {
   useEffect(() => {
     handleMainNumbers().catch(error => console.log('handleMainNumbers', error))
     handleRatings().catch(error => console.log('handleRatings', error))
+    handleChosenGoals().catch(error => console.log('handleChosenGoals', error))
     handleCompany()
     handleActiveUsers()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -247,7 +267,10 @@ export default function Home() {
       </MiddleBox>
       <BottomBox>
         <MediaGeral>
-          <AverageChart />
+          <AverageChart
+            name={dataChosenGoals.labels}
+            data={dataChosenGoals.datasets}
+          />
         </MediaGeral>
         <ChartDepre>
           <IsiGadPhq />
