@@ -22,8 +22,8 @@ export const NameItem = styled.div`
   max-width: 4rem;
 `
 export const Square = styled.div`
-  min-width: 1.6rem;
-  min-height: 1.6rem;
+  min-width: 2rem;
+  min-height: 2rem;
   background-color: ${props => props.color};
 `
 export const Name = styled.span`
@@ -31,15 +31,20 @@ export const Name = styled.span`
   width: 100%;
   font-weight: bold;
 `
-
+export const LineSquare = styled.div`
+  min-width: 1.6rem;
+  min-height: 1.6rem;
+  background-color: ${props => props.color};
+`
 export const LineLegendDiv = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.5rem;
   margin-right: 0.8rem;
   color: black;
 `
 export const LineNameItem = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 0.1rem;
 `

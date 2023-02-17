@@ -116,11 +116,11 @@ export const MediaGeral = styled.div`
 `
 
 export const ChartDepre = styled.div`
-  min-width: 15rem;
+  min-width: 10rem;
   width: 100%;
-  max-width: 60rem;
+  max-width: 40rem;
   min-height: 15rem;
   height: 100%;
   max-height: 25rem;
-  margin-left: 1rem;
+  margin-left: 0.2rem;
 `

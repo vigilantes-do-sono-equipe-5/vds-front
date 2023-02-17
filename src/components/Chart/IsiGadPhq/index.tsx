@@ -1,16 +1,18 @@
 import LineChart from '../LineChart'
 import { LineChartNames } from '../ChartNames'
-import { Chart, ChartDiv, ChartContainer, Title } from './styled'
+import { Chart, ChartDiv, ChartContainer, Title, BoxNames } from './styled'
 
 export default function IsiGadPhq() {
   return (
     <ChartContainer>
-      <Title>Avaliações semanais</Title>
+      <Title>AVALIAÇÕES SEMANAIS</Title>
       <ChartDiv>
-        |<LineChartNames />
         <Chart>
           <LineChart />
         </Chart>
+        <BoxNames>
+          <LineChartNames />
+        </BoxNames>
       </ChartDiv>
     </ChartContainer>
   )

@@ -3,6 +3,7 @@ import {
   LegendDiv,
   LineLegendDiv,
   LineNameItem,
+  LineSquare,
   Name,
   NameItem,
   Square
@@ -71,7 +72,7 @@ export function LineChartNames() {
     <LineLegendDiv>
       {lineDados.map((el, index) => (
         <LineNameItem key={index}>
-          <Square color={el.color} />
+          <LineSquare color={el.color} />
           <Name>{el.name}</Name>
         </LineNameItem>
       ))}
