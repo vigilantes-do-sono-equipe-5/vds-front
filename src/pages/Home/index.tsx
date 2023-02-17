@@ -135,24 +135,21 @@ export default function Home() {
   const handleChosenCompany = (event: ChangeEvent<HTMLSelectElement>) => {
     event.preventDefault()
     setChosenCompany(event.target.value)
-  }
 
-  const handleCompany = () => {
-    if (chosenCompany !== '') {
-      const filterCompany = companyStates.companies.filter(
-        e => e.id === chosenCompany
-      )
-      setCompany(
-        filterCompany || [
-          {
-            id: '',
-            name: '',
-            employees: 0,
-            activeEmployees: 0
-          }
-        ]
-      )
-    }
+    const filterCompany = companyStates.companies.filter(
+      e => e.id === event.target.value
+    )
+    setCompany(
+      filterCompany || [
+        {
+          id: '',
+          name: '',
+          employees: 0,
+          activeEmployees: 0
+        }
+      ]
+    )
+    handleRatings().catch(error => console.log('handleRatings', error))
   }
 
   const mountData = (
@@ -175,7 +172,6 @@ export default function Home() {
       }
     }
   }
-
   const handleMainNumbers = async () => {
     if (chosenCompany !== '') {
       await companyFunctions
@@ -232,41 +228,6 @@ export default function Home() {
       )
     } else {
       setDataUser(dataUserInitial)
-    }
-  }
-
-  const handleRatings = async () => {
-    if (
-      typeof company !== 'undefined' &&
-      chosenCompany !== '' &&
-      typeof date?.period !== 'undefined'
-    ) {
-      await ratingsFunctions.getRatings(
-        company[0].id,
-        date.period[0],
-        date.period[1]
-      )
-    }
-
-    if (
-      typeof company !== 'undefined' &&
-      chosenCompany !== '' &&
-      typeof date?.period !== 'undefined' &&
-      typeof ratingsStates?.ratings !== 'undefined'
-    ) {
-      setDataRatings(
-        mountData(
-          [
-            ratingsStates.ratings?.[1],
-            ratingsStates.ratings?.[2],
-            ratingsStates.ratings?.[3],
-            ratingsStates.ratings?.[4],
-            ratingsStates.ratings?.[5]
-          ],
-          ['1 ⭐', '2 ⭐', '3 ⭐', '4 ⭐', '5 ⭐'],
-          ['blue', 'blue', 'blue', 'blue', 'blue']
-        )
-      )
     }
   }
 
@@ -349,6 +310,43 @@ export default function Home() {
     }
   }
 
+  const handleRatings = async () => {
+    if (
+      typeof company !== 'undefined' &&
+      chosenCompany !== '' &&
+      typeof date?.period !== 'undefined'
+    ) {
+      await ratingsFunctions.getRatings(
+        company[0].id,
+        date.period[0],
+        date.period[1]
+      )
+    }
+
+    if (
+      typeof company !== 'undefined' &&
+      chosenCompany !== '' &&
+      typeof date?.period !== 'undefined' &&
+      typeof ratingsStates?.ratings !== 'undefined'
+    ) {
+      setDataRatings(
+        mountData(
+          [
+            ratingsStates.ratings?.[1],
+            ratingsStates.ratings?.[2],
+            ratingsStates.ratings?.[3],
+            ratingsStates.ratings?.[4],
+            ratingsStates.ratings?.[5]
+          ],
+          ['1 ⭐', '2 ⭐', '3 ⭐', '4 ⭐', '5 ⭐'],
+          ['blue', 'blue', 'blue', 'blue', 'blue']
+        )
+      )
+    } else {
+      setDataRatings(dataRatingsInitial)
+    }
+  }
+
   useEffect(() => {
     companyFunctions
       .getCompanies()
@@ -357,7 +355,6 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    handleCompany()
     handleMainNumbers().catch(error => console.log('handleMainNumbers', error))
     handleRatings().catch(error => console.log('handleRatings', error))
     handleChosenGoals().catch(error => console.log('handleChosenGoals', error))

@@ -41,8 +41,8 @@ export default function AverageChart({
         <BoxChart>
           <BarChart labels={nameChart} datasets={dataChart} />
         </BoxChart>
-        <h3>Gráficos</h3>
         <BoxButtons>
+          <h3>Gráficos</h3>
           <Buttons name={'Barra'} />
           <Buttons name={'Pizza'} />
           <Buttons name={'Polar'} />

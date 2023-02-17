@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios'
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 import { api } from '../helpers/api'
 import {
   IChosenGoals,
