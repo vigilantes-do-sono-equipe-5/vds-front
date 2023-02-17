@@ -4,8 +4,6 @@ import {
   BsBarChartFill,
   BsFillCaretLeftFill,
   BsFillCaretRightFill,
-  BsHouse,
-  BsHouseFill,
   BsMoonStarsFill,
   BsSunFill,
   BsToggle2Off,
@@ -42,42 +40,12 @@ export default function Menu({ changeTheme }: ITheme) {
   useEffect(() => {}, [])
   function handleClick(value: string) {
     switch (value) {
-      case 'home':
-        setMenu({
-          home: true,
-          chart: false,
-          message: false,
-          help: false,
-          theme
-        })
-        break
-
       case 'chart':
         setMenu({
           home: false,
           chart: true,
           message: false,
           help: false,
-          theme
-        })
-        break
-
-      case 'message':
-        setMenu({
-          home: false,
-          chart: false,
-          message: true,
-          help: false,
-          theme
-        })
-        break
-
-      case 'help':
-        setMenu({
-          home: false,
-          chart: false,
-          message: false,
-          help: true,
           theme
         })
         break
@@ -91,6 +59,7 @@ export default function Menu({ changeTheme }: ITheme) {
         break
     }
   }
+
   function toggleTheme() {
     changeTheme()
     setTheme(!theme)
@@ -105,22 +74,11 @@ export default function Menu({ changeTheme }: ITheme) {
         </LogoMenu>
         <NavMenu>
           <NavLink
-            className={menu.home ? 'on' : ''}
-            onClick={() => {
-              handleClick('home')
-            }}
-            to='/'>
-            <span className={dropdown ? 'dropdown' : ''}>
-              {menu.home ? <BsHouseFill /> : <BsHouse />}
-            </span>
-            {dropdown ? 'Home' : ''}
-          </NavLink>
-          <NavLink
             className={menu.chart ? 'on' : ''}
             onClick={() => {
               handleClick('chart')
             }}
-            to='/chart'>
+            to='/'>
             <span className={dropdown ? 'dropdown' : ''}>
               {menu.chart ? <BsBarChartFill /> : <BsBarChart />}
             </span>
