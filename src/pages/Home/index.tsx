@@ -59,9 +59,9 @@ export default function Home() {
         <MediaGeral>
           <AverageChart />
         </MediaGeral>
-        <ChartDepre>
+        <MediaGeral>
           <IsiGadPhq />
-        </ChartDepre>
+        </MediaGeral>
       </BottomBox>
     </Container>
   )

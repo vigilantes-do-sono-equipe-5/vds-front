@@ -1,5 +1,12 @@
-import { IChartData } from '../../../interfaces/Chart.interface'
-import { LegendDiv, Name, NameItem, Square } from './styled'
+import { IChartData, ILineData } from '../../../interfaces/Chart.interface'
+import {
+  LegendDiv,
+  LineLegendDiv,
+  LineNameItem,
+  Name,
+  NameItem,
+  Square
+} from './styled'
 
 export const LegendData: IChartData = {
   labels: ['1 star', '2 star', '3 start', '4 star', '5 star'],
@@ -29,7 +36,25 @@ const dados = [
   }
 ]
 
-export default function ChartNames() {
+const lineDados: ILineData[] = [
+  {
+    id: 'abcd1',
+    name: 'ISI',
+    color: 'red'
+  },
+  {
+    id: 'abcd2',
+    name: 'GAD',
+    color: 'orange'
+  },
+  {
+    id: 'abcd3',
+    name: 'PHQ',
+    color: 'green'
+  }
+]
+
+export function ChartNames() {
   return (
     <LegendDiv>
       {dados.map((el, index) => (
@@ -39,5 +64,17 @@ export default function ChartNames() {
         </NameItem>
       ))}
     </LegendDiv>
+  )
+}
+export function LineChartNames() {
+  return (
+    <LineLegendDiv>
+      {lineDados.map((el, index) => (
+        <LineNameItem key={index}>
+          <Square color={el.color} />
+          <Name>{el.name}</Name>
+        </LineNameItem>
+      ))}
+    </LineLegendDiv>
   )
 }

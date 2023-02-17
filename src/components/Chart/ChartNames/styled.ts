@@ -31,3 +31,15 @@ export const Name = styled.span`
   width: 100%;
   font-weight: bold;
 `
+
+export const LineLegendDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-right: 0.8rem;
+  color: black;
+`
+export const LineNameItem = styled.div`
+  display: flex;
+  gap: 0.1rem;
+`
