@@ -6,6 +6,7 @@ export const MonthBox = styled.div`
   grid-template-rows: 1fr 1fr 1fr 1fr;
   width: 13rem;
   height: 13rem;
+  z-index: 100;
 `
 
 export const Month = styled.button`

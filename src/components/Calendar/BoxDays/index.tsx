@@ -13,11 +13,6 @@ interface IButtonMonth {
   handleSetDate: (object: { period?: string[]; type: 'week' | 'month' }) => void
 }
 
-// interface IDate {
-//   date: string[]
-//   selected?: boolean[]
-// }
-
 export default function BoxDays({
   firstDayCurrentMonth,
   handleSetDate

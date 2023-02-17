@@ -24,6 +24,7 @@ export const BoxCalendar = styled.div`
   width: 100%;
   min-width: 8rem;
   padding: 1rem;
+  z-index: 100;
 
   @media screen and (max-width: 1080px) {
     padding-right: 1rem;

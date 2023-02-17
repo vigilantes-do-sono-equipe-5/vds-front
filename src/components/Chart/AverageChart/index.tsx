@@ -8,8 +8,7 @@ import {
 } from 'chart.js'
 import { useEffect, useState } from 'react'
 import BarChart from '../BarChart'
-import Buttons from '../Buttons'
-import { BoxButtons, BoxChart, ChartContainer, ChartDiv, Title } from './styled'
+import { BoxChart, ChartContainer, ChartDiv, Title } from './styled'
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
 
@@ -41,12 +40,6 @@ export default function AverageChart({
         <BoxChart>
           <BarChart labels={nameChart} datasets={dataChart} />
         </BoxChart>
-        <BoxButtons>
-          <h3>Gráficos</h3>
-          <Buttons name={'Barra'} />
-          <Buttons name={'Pizza'} />
-          <Buttons name={'Polar'} />
-        </BoxButtons>
       </ChartDiv>
     </ChartContainer>
   )

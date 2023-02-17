@@ -27,8 +27,8 @@ export const Title = styled.h1`
   color: ${props => props.theme.colors.secondary};
 `
 export const ChartDiv = styled.div`
-  display: grid;
-  grid-template-rows: 2fr 1fr;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0 1rem;
@@ -41,8 +41,10 @@ export const ChartDiv = styled.div`
 `
 
 export const BoxChart = styled.div`
+  display: flex;
+  justify-content: center;
   min-width: 10rem;
-  width: 30rem;
+  width: 100%;
   max-width: 50rem;
   min-height: 8rem;
   height: 100%;

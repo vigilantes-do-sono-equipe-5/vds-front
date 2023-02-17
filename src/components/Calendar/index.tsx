@@ -77,7 +77,10 @@ export default function Calendar({ handleSetDate }: IProps) {
             />
           </BoxMonth>
         ) : (
-          <MonthView handleSetDate={handleSetDate} />
+          <MonthView
+            handleSetDate={handleSetDate}
+            firstDayCurrentMonth={currentDate}
+          />
         )}
       </BoxCalendar>
       <BoxButton>

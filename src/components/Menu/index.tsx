@@ -4,12 +4,9 @@ import {
   BsBarChartFill,
   BsFillCaretLeftFill,
   BsFillCaretRightFill,
-  BsFillEnvelopeFill,
-  BsFillEnvelopeOpenFill,
   BsHouse,
   BsHouseFill,
   BsMoonStarsFill,
-  BsQuestion,
   BsSunFill,
   BsToggle2Off,
   BsToggle2On
@@ -128,32 +125,6 @@ export default function Menu({ changeTheme }: ITheme) {
               {menu.chart ? <BsBarChartFill /> : <BsBarChart />}
             </span>
             {dropdown ? 'Gráfico' : ''}
-          </NavLink>
-          <NavLink
-            className={menu.message ? 'on' : ''}
-            onClick={() => {
-              handleClick('message')
-            }}
-            to='/message'>
-            <span className={dropdown ? 'dropdown' : ''}>
-              {menu.message ? (
-                <BsFillEnvelopeOpenFill />
-              ) : (
-                <BsFillEnvelopeFill />
-              )}
-            </span>
-            {dropdown ? 'Mensagem' : ''}
-          </NavLink>
-          <NavLink
-            className={menu.help ? 'on' : ''}
-            onClick={() => {
-              handleClick('help')
-            }}
-            to='/help'>
-            <span className={dropdown ? 'dropdown' : ''}>
-              <BsQuestion />
-            </span>
-            {dropdown ? 'Ajuda' : ''}
           </NavLink>
         </NavMenu>
         <ThemeBox>

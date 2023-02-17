@@ -377,7 +377,7 @@ export default function Home() {
       </Client>
       <TopBox>
         <BoxChart>
-          <UserChart name={'Usúários ativos'} data={dataUser} />
+          <UserChart name={'Usuários ativos'} data={dataUser} />
         </BoxChart>
         <BoxChart>
           <RatingChart
