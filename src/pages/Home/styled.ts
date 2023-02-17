@@ -109,7 +109,7 @@ export const BottomBox = styled.div`
 export const MediaGeral = styled.div`
   min-width: 10rem;
   width: 100%;
-  max-width: 40rem;
+  max-width: 50rem;
   min-height: 15rem;
   height: 100%;
   max-height: 25rem;
@@ -118,7 +118,7 @@ export const MediaGeral = styled.div`
 export const ChartDepre = styled.div`
   min-width: 10rem;
   width: 100%;
-  max-width: 40rem;
+  max-width: 50rem;
   min-height: 15rem;
   height: 100%;
   max-height: 25rem;
